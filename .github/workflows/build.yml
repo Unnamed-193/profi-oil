@@ -22,4 +22,4 @@ jobs:
           branch: gh-pages
           folder: dist
           clean: true
-          force: true 
+          force: true
