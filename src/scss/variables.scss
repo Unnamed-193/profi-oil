@@ -29,6 +29,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 
 // Брейк-поинты
 $pc: $containerWidth; // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$laptop: 1339.98;
 $tablet: 991.98; // Планшеты, некоторые телефоны в горизонтальном положении
 $mobile: 767.98; // Телефоны L
 $mobileSmall: 479.98; // Телефоны S

@@ -141,22 +141,22 @@
   line-height: 1;
   text-transform: uppercase;
   position: relative;
-  translate: 0 calc(3.125rem * var(--translateCoef, 1));
+  translate: 0 1.875rem;
   opacity: 0;
 }
 @media (min-width: 120em) {
   .hero__title {
-    font-size: 5rem;
+    font-size: 2rem;
   }
 }
 @media (min-width: 23.4375em) and (max-width: 120em) {
   .hero__title {
-    font-size: clamp( 2.5rem , 1.8932038835rem  +  2.5889967638vw , 5rem );
+    font-size: clamp( 1.5rem , 1.3786407767rem  +  0.5177993528vw , 2rem );
   }
 }
 @media (max-width: 23.4375em) {
   .hero__title {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
 }
 @media (min-width: 47.99875em) {
