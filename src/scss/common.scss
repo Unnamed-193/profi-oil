@@ -15,49 +15,49 @@ img {
 }
 
 ._md1dn {
-  @media (max-width:mixins.toEm(variables.$pc)){
+  @media (max-width:mixins.toEm(variables.$pc)) {
     display: none !important;
   }
 }
 
 ._mmd1dn {
-  @media (min-width:mixins.toEm(variables.$pc)){
+  @media (min-width:mixins.toEm(variables.$pc)) {
     display: none !important;
   }
 }
 
 ._md2dn {
-  @media (max-width:mixins.toEm(variables.$tablet)){
+  @media (max-width:mixins.toEm(variables.$tablet)) {
     display: none !important;
   }
 }
 
 ._mmd2dn {
-  @media (min-width:mixins.toEm(variables.$tablet)){
+  @media (min-width:mixins.toEm(variables.$tablet)) {
     display: none !important;
   }
 }
 
 ._md3dn {
-  @media (max-width:mixins.toEm(variables.$mobile)){
+  @media (max-width:mixins.toEm(variables.$mobile)) {
     display: none !important;
   }
 }
 
 ._mmd3dn {
-  @media (min-width:mixins.toEm(variables.$mobile)){
+  @media (min-width:mixins.toEm(variables.$mobile)) {
     display: none !important;
   }
 }
 
 ._md4dn {
-  @media (max-width:mixins.toEm(variables.$mobileSmall)){
+  @media (max-width:mixins.toEm(variables.$mobileSmall)) {
     display: none !important;
   }
 }
 
 ._mmd4dn {
-  @media (min-width:mixins.toEm(variables.$mobileSmall)){
+  @media (min-width:mixins.toEm(variables.$mobileSmall)) {
     display: none !important;
   }
 }
@@ -68,23 +68,26 @@ img {
 
 ._ozonbtn {
   background-color: var(--ozon);
+  font-weight: 500;
   color: var(--white);
   font-size: mixins.toRem(22);
-  line-height: math.div(28.6 , 22);
-  width: mixins.toRem(277);
-  height: mixins.toRem(50);
+  line-height: math.div(28.6, 22);
+  width: mixins.toRem(294);
+  height: mixins.toRem(58);
   display: flex;
-  justify-content:center;align-items: center;
-  border-radius: mixins.toRem(5.09);
+  justify-content: center;
+  align-items: center;
+  border-radius: mixins.toRem(8);
   overflow: hidden;
   position: relative;
   text-transform: uppercase;
+
   .loaded & {
     transition: box-shadow 0.3s ease 0s;
   }
 
-  &::before{
-    content:'';
+  &::before {
+    content: '';
     position: absolute;
     top: 0;
     left: -150%;
@@ -95,6 +98,7 @@ img {
     filter: blur(10px);
     z-index: 0;
     left: -300%;
+
     ._watcher-view & {
       animation: 2s infinite glow-line
     }
@@ -104,8 +108,8 @@ img {
     transition: translate 0.3s ease 0s, box-shadow 0.3s ease 0s;
   }
 
-  @media (any-hover: hover){
-    &:hover{
+  @media (any-hover: hover) {
+    &:hover {
       translate: 0 -10%;
       box-shadow: 0px 4px 10px 0px rgba(0, 105, 255, 0.37);
     }
@@ -115,7 +119,8 @@ img {
     background-color: var(--white);
     color: var(--ozon);
     font-weight: 500;
-    &::before{
+
+    &::before {
       // #0069FF
       background: linear-gradient(120deg, transparent, rgba(0, 106, 255, 0.5), transparent);
     }
@@ -125,11 +130,11 @@ img {
 
 @keyframes glow-line {
   0% {
-      left: -300%
+    left: -300%
   }
 
   100% {
-      left: 150%
+    left: 150%
   }
 }
 
@@ -149,6 +154,7 @@ img {
   border-radius: mixins.toRem(99999);
   width: mixins.toRem(3);
 }
+
 // ._hexagon {
 //   inset: 0;
 //   transform: unset;
@@ -188,13 +194,15 @@ img {
   border: mixins.toRem(1) solid var(--red);
   padding: mixins.toRem(7) mixins.toRem(19);
   border-radius: mixins.toRem(7);
-  line-height: math.div(24 , 20);
+  line-height: math.div(24, 20);
   @include mixins.adaptiveValue("font-size", 20, 14);
+
   .loaded & {
     transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
   }
-  @media (any-hover: hover){
-    &:hover{
+
+  @media (any-hover: hover) {
+    &:hover {
       background-color: var(--red_hover);
     }
   }
@@ -203,8 +211,8 @@ img {
     background-color: transparent;
     color: var(--mainColor);
 
-    @media (any-hover: hover){
-      &:hover{
+    @media (any-hover: hover) {
+      &:hover {
         color: var(--white);
         background-color: var(--red);
       }
@@ -227,7 +235,7 @@ img {
   border-radius: mixins.toRem(9999999);
   overflow: hidden;
 
-  @media (min-width:mixins.toEm(variables.$mobile)){
+  @media (min-width:mixins.toEm(variables.$mobile)) {
     display: none;
   }
 
