@@ -2001,14 +2001,6 @@
 
 //==========================================================================================
 .ozon {
-  opacity: 0;
-  translate: 0 mixins.toRem(30);
-
-  .loaded & {
-    transition:
-      translate var(--globalAnimDuration) var(--globalTransitionTiming),
-      opacity var(--globalAnimDuration) var(--globalTransitionTiming);
-  }
 
   @media (min-width:mixins.toEm(variables.$mobile)) {
     border-radius: mixins.toRem(20) mixins.toRem(20) 0 0;
@@ -2023,14 +2015,8 @@
     background-position: 70% 70%;
   }
 
-  .loaded &._watcher-view {
-    opacity: 1;
-    translate: 0 0;
-  }
 
   &__container {
-    opacity: 0;
-    translate: 0 mixins.toRem(30);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2038,13 +2024,7 @@
     padding-left: mixins.toRem(20);
     padding-right: mixins.toRem(20);
 
-    .loaded & {
-      transition:
-        translate var(--globalAnimDuration) var(--globalTransitionTiming),
-        opacity var(--globalAnimDuration) var(--globalTransitionTiming);
 
-      transition-delay: calc(var(--globalAnimDuration) * 0.7);
-    }
 
     @include mixins.adaptiveValue("padding-top", 65, 50);
     @include mixins.adaptiveValue("gap", 79, 30, 1320, 767);
@@ -2052,11 +2032,6 @@
     @media (max-width:mixins.toEm(variables.$mobile)) {
       flex-direction: column;
       text-align: center;
-    }
-
-    .loaded ._watcher-view & {
-      opacity: 1;
-      translate: 0 0;
     }
   }
 
@@ -2085,21 +2060,6 @@
 .footer {
   background-color: var(--red);
   color: var(--light);
-  opacity: 0;
-  translate: 0 mixins.toRem(30);
-
-  .loaded & {
-    transition:
-      translate var(--globalAnimDuration) var(--globalTransitionTiming),
-      opacity var(--globalAnimDuration) var(--globalTransitionTiming);
-
-    transition-delay: calc(var(--globalAnimDuration) * 0.7);
-  }
-
-  .loaded &._watcher-view {
-    opacity: 1;
-    translate: 0 0;
-  }
 
   &__container {
     display: flex;
@@ -2107,24 +2067,10 @@
     gap: mixins.toRem(10);
     justify-content: space-between;
     max-width: mixins.toRem(1320);
-    opacity: 0;
-    translate: 0 mixins.toRem(30);
-
-    .loaded & {
-      transition:
-        translate var(--globalAnimDuration) var(--globalTransitionTiming),
-        opacity var(--globalAnimDuration) var(--globalTransitionTiming);
-
-      transition-delay: calc(var(--globalAnimDuration) * 1.4);
-    }
 
     @include mixins.adaptiveValue("padding-top", 80, 39);
     @include mixins.adaptiveValue("padding-bottom", 120, 71);
 
-    .loaded ._watcher-view & {
-      opacity: 1;
-      translate: 0 0;
-    }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
       flex-direction: column;
