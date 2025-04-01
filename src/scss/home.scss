@@ -12,12 +12,19 @@
 
 .hero {
   position: relative;
-  --animDuration: var(--globalAnimDuration);
-  --animDelay: var(--globalAnimDelay);
 
-  @media (max-width:mixins.toEm(variables.$mobile)) {
-    --animDuration: 0.5s;
-    --animDelay: 0.1s;
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url('img/hero/pattern.png');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+    mix-blend-mode: lighten;
   }
 
   &__bg {
@@ -26,7 +33,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--light);
+    background-color: var(--light_grey);
 
     img {
       width: 100%;
@@ -63,6 +70,9 @@
         background: linear-gradient(180.1deg, rgba(17, 41, 69, 0.4) 11.16%, rgba(17, 41, 69, 0) 99.92%);
       }
     }
+
+
+
   }
 
   &__container {
@@ -160,225 +170,33 @@
     line-height: 120%;
     text-align: center;
     color: var(--white);
+    height: mixins.toRem(41);
     background: var(--slogan);
     border-radius: 30px;
-    padding: 8px 44px 13px 30px;
     margin-bottom: mixins.toRem(140);
     @include mixins.adaptiveValue("font-size", 28, 16);
+    @include mixins.adaptiveValue("width", 430, 241);
+    @include mixins.adaptiveValue("height", 41, 48);
   }
 
   &__bottles {
     display: flex;
     align-items: center;
     justify-content: center;
-    translate: mixins.toRem(4) mixins.toRem(50);
-    opacity: 0;
     position: absolute;
+    bottom: 100px;
+    left: 18%;
 
-    @include mixins.adaptiveValue("--mh", 313, 177);
 
     img {
-      height: calc(var(--mh) * var(--coef, 1));
-      translate: var(--x, 0) var(--y, 0);
-      z-index: 3;
+      z-index: 1;
 
-      &:not(:nth-child(3)) {
-        opacity: 0;
-      }
+      @media (min-width:mixins.toEm(variables.$mobile)) {}
 
-
-      .loaded & {
-        transition:
-          translate var(--animDuration) ease-in-out calc(var(--animDuration) + var(--animDelay)),
-          opacity var(--animDuration) ease-in-out calc(var(--animDuration) + var(--animDelay));
-      }
-
-      &:nth-child(1) {
-        --x: 227%;
-        --y: 6%;
-        z-index: 1;
-      }
-
-      &:nth-child(2) {
-        --x: 116%;
-        --y: 4%;
-        z-index: 2;
-      }
-
-      &:nth-child(4) {
-        --x: -103%;
-        --y: 3.5%;
-        z-index: 2;
-      }
-
-      &:nth-child(5) {
-        --x: -220%;
-        --y: 2%;
-        z-index: 1;
-      }
-
-      @media (min-width:mixins.toEm(variables.$mobile)) {
-        &:nth-child(1) {
-          --coef: calc(285 / 313);
-        }
-
-        &:nth-child(5) {
-          --coef: calc(285 / 300);
-        }
-
-        &:nth-child(2),
-        &:nth-child(4) {
-          --coef: calc(296 / 313);
-        }
-      }
-
-      @media (max-width:mixins.toEm(variables.$mobile)) {
-
-        &:nth-child(1),
-        &:nth-child(5) {
-          --coef: calc(161.27 / 177);
-        }
-
-        &:nth-child(2),
-        &:nth-child(4) {
-          --coef: calc(167.43 / 177);
-        }
-      }
-
-      .loaded ._watcher-view & {
-        opacity: 1;
-
-        @media (min-width:mixins.toEm(variables.$mobile)) {
-          &:nth-child(1) {
-            --x: 120%;
-            --y: 6%;
-            z-index: 1;
-          }
-
-          &:nth-child(2) {
-            --x: 64%;
-            --y: 4%;
-            z-index: 2;
-          }
-
-          &:nth-child(4) {
-            --x: -64%;
-            --y: 3.5%;
-            z-index: 2;
-          }
-
-          &:nth-child(5) {
-            --x: -125%;
-            --y: 2%;
-            z-index: 1;
-          }
-
-          &:nth-child(3) {
-            --x: 0.01px;
-            --y: 0.01px;
-            z-index: 3;
-          }
-        }
-
-        @media (max-width:mixins.toEm(variables.$mobile)) {
-          &:nth-child(1) {
-            --x: 140%;
-            --y: 6%;
-            z-index: 1;
-          }
-
-          &:nth-child(2) {
-            --x: 74%;
-            --y: 4%;
-            z-index: 2;
-          }
-
-          &:nth-child(4) {
-            --x: -64%;
-            --y: 3.5%;
-            z-index: 2;
-          }
-
-          &:nth-child(5) {
-            --x: -134%;
-            --y: 3%;
-            z-index: 1;
-          }
-
-          &:nth-child(3) {
-            --x: 0.01px;
-            --y: 0.01px;
-            z-index: 3;
-          }
-        }
-      }
-    }
-
-    .loaded & {
-      transition:
-        translate var(--animDuration) ease-in-out 0s,
-        opacity var(--animDuration) ease-in-out calc(var(--animDuration) * 0.2);
-    }
-
-    .loaded ._watcher-view & {
-      translate: mixins.toRem(4) 0;
-      opacity: 1;
+      @media (max-width:mixins.toEm(variables.$mobile)) {}
     }
   }
 
-  &__red {
-    position: relative;
-    z-index: 2;
-  }
-}
-
-.red-hero {
-  background-color: var(--red);
-
-  @include mixins.adaptiveValue("border-radius", 20, 10);
-
-  &__container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: mixins.toRem(30) mixins.toRem(35);
-    color: var(--white);
-    font-size: mixins.toRem(32);
-    line-height: math.div(38.4, 32);
-    letter-spacing: mixins.toRem(-0.64);
-    text-align: center;
-    translate: 0 mixins.toRem(50);
-    opacity: 0;
-    font-weight: 500;
-
-    .loaded & {
-      transition:
-        translate var(--animDuration) ease-in-out calc(var(--animDuration) + var(--animDelay)),
-        opacity var(--animDuration) ease-in-out calc(var(--animDuration) + var(--animDelay));
-    }
-
-    @media (min-width:mixins.toEm(variables.$mobile)) {
-      padding-bottom: mixins.toRem(43.31);
-      padding-top: mixins.toRem(88.69);
-      margin-top: mixins.toRem(-63.69);
-    }
-
-    @media (max-width:mixins.toEm(variables.$mobile)) {
-      flex-direction: column;
-      padding-top: mixins.toRem(101);
-      padding-bottom: mixins.toRem(50);
-      margin-top: mixins.toRem(-71);
-    }
-
-    .loaded ._watcher-view & {
-      translate: 0 0;
-      opacity: 1;
-    }
-  }
-
-  &__title {}
-
-  &__button {}
 }
 
 //====================================================================================================
