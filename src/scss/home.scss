@@ -75,7 +75,7 @@
 
     @media (min-width:mixins.toEm(variables.$laptop)) {
       padding-top: mixins.toRem(35);
-      padding-bottom: mixins.toRem(140);
+      padding-bottom: mixins.toRem(130);
     }
 
     @media (max-width:mixins.toEm(variables.$laptop)) {
@@ -91,14 +91,14 @@
     display: flex;
     z-index: 2;
 
-    @include mixins.adaptiveValue("max-width", 139, 92);
+    // @include mixins.adaptiveValue("max-width", 139, 72);
 
     &:not(:last-child) {
-      @include mixins.adaptiveValue("margin-bottom", 40, 35);
+      @include mixins.adaptiveValue("margin-bottom", 37, 35);
     }
 
     img {
-      aspect-ratio: 139 / 73;
+      width: 139px;
     }
   }
 
@@ -106,10 +106,7 @@
     font-weight: 700;
     color: var(--white);
     line-height: 1;
-    text-transform: uppercase;
     position: relative;
-    translate: 0 mixins.toRem(30);
-    opacity: 0;
 
     @include mixins.adaptiveValue("font-size", 32, 24);
 
@@ -128,24 +125,12 @@
       }
     }
 
-    .loaded & {
-      transition:
-        translate var(--animDuration) ease-in-out 0s,
-        opacity var(--animDuration) ease-in-out calc(var(--animDuration) * 0.2);
-    }
-
     svg {
       position: absolute;
       top: 50%;
       left: 50%;
       translate: -50% -50%;
       z-index: -1;
-    }
-
-
-    .loaded ._watcher-view & {
-      translate: 0 0;
-      opacity: 1;
     }
   }
 
@@ -157,9 +142,6 @@
     letter-spacing: -0.02em;
     text-transform: uppercase;
     text-align: center;
-    translate: 0 mixins.toRem(30);
-    opacity: 0;
-
 
     @include mixins.adaptiveValue("font-size", 55, 24);
 
@@ -170,17 +152,6 @@
       &:not(:last-child) {
         margin-bottom: mixins.toRem(31);
       }
-    }
-
-    .loaded & {
-      transition:
-        translate var(--animDuration) ease-in-out 0.1s,
-        opacity var(--animDuration) ease-in-out calc(var(--animDuration) * 0.2);
-    }
-
-    .loaded ._watcher-view & {
-      translate: 0 0;
-      opacity: 1;
     }
   }
 
@@ -193,21 +164,7 @@
     border-radius: 30px;
     padding: 8px 44px 13px 30px;
     margin-bottom: mixins.toRem(140);
-    translate: 0 mixins.toRem(30);
-    opacity: 0;
     @include mixins.adaptiveValue("font-size", 28, 16);
-
-    .loaded & {
-      transition:
-        translate var(--animDuration) ease-in-out 0.2s,
-        opacity var(--animDuration) ease-in-out calc(var(--animDuration) * 0.2);
-    }
-
-    .loaded ._watcher-view & {
-      translate: 0 0;
-      opacity: 1;
-    }
-
   }
 
   &__bottles {

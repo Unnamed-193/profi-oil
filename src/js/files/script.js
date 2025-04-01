@@ -4,6 +4,8 @@ import { debounce, isMobile } from "./functions.js";
 import { mhzModules } from "./modules.js";
 import { gotoBlock } from "./scroll/gotoblock.js";
 
+import './gsap/hero/hero.js'
+
 const mmd1 = matchMedia('(min-width: 1920px)');
 const md3 = matchMedia('(min-width: 1920px)');
 
