@@ -201,8 +201,6 @@
 
 //====================================================================================================
 .ow {
-  background-color: var(--light);
-
   &__container {
     max-width: mixins.toRem(1320);
     display: flex;
@@ -262,8 +260,8 @@
 
     span {
       @media (max-width:mixins.toEm(variables.$mobile)) {
-         display: block;
-        }
+        display: block;
+      }
     }
   }
 }
@@ -948,15 +946,25 @@
     @media (min-width:mixins.toEm(variables.$tablet)) {
       img {
         max-width: none;
-        width: mixins.percent(1070, 952);
+        width: mixins.percent(1370, 952);
       }
     }
 
     @media (max-width:mixins.toEm(variables.$tablet)) {
+      img {
+        max-width: none;
+      }
+      position: relative;
       z-index: 2;
       border-radius: mixins.toRem(15);
       overflow: hidden;
       height: mixins.percent(531, 1037);
+    }
+
+    @media (max-width:mixins.toEm(variables.$mobileSmall)) {
+      img {
+        width: 100%;
+      }
     }
   }
 
@@ -964,16 +972,15 @@
     position: relative;
     display: flex;
     justify-content: flex-end;
+    background: linear-gradient(154deg, #e5ceac 0%, #b58e5c 100%);
 
     @media (min-width:mixins.toEm(variables.$tablet)) {
       border-radius: mixins.toRem(20);
-      background: linear-gradient(276.61deg, #BC1F29 -2.76%, #E2000F 98.82%);
     }
 
     @media (max-width:mixins.toEm(variables.$tablet)) {
       border-radius: 0 0 mixins.toRem(20) mixins.toRem(20);
       margin-top: mixins.toRem(-36);
-      background: linear-gradient(338.25deg, #BC1F29 20.13%, #E2000F 85.85%);
       height: mixins.percent(542, 1037);
     }
 
@@ -1100,28 +1107,6 @@
     }
   }
 
-  &__subtitle {
-    font-weight: 500;
-    opacity: 0;
-    translate: 0 mixins.toRem(30);
-    @include mixins.adaptiveValue("font-size", 22, 18);
-
-    .loaded & {
-      transition:
-        translate var(--globalAnimDuration) var(--globalTransitionTiming),
-        opacity var(--globalAnimDuration) var(--globalTransitionTiming);
-    }
-
-    @media (min-width:mixins.toEm(variables.$tablet)) {
-      line-height: math.div(15, 22);
-    }
-
-    .loaded ._watcher-view & {
-      opacity: 1;
-      translate: 0 0;
-    }
-  }
-
   &__title {
     text-transform: uppercase;
     line-height: math.div(54, 45);
@@ -1221,8 +1206,8 @@
     display: flex;
     align-items: center;
     border-radius: calc(1px / 0);
-    border: mixins.toRem(2) solid var(--gold);
-    background-color: var(--red_dark);
+    border: mixins.toRem(2) solid var(--border-gold);
+    background-color: var(--dark-yellow);
     width: 100%;
     position: relative;
     height: calc(var(--img_width) + (var(--pt) * 2));
