@@ -142,6 +142,10 @@ img {
   color: var(--gold);
 }
 
+._red {
+  color: var(--red);
+}
+
 ::-webkit-scrollbar {
   width: mixins.toRem(3);
   height: mixins.toRem(3);

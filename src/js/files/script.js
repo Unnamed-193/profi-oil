@@ -5,6 +5,7 @@ import { mhzModules } from "./modules.js";
 import { gotoBlock } from "./scroll/gotoblock.js";
 
 import './gsap/hero/hero.js'
+import './gsap/ow/ow.js'
 
 const mmd1 = matchMedia('(min-width: 1920px)');
 const md3 = matchMedia('(min-width: 1920px)');
