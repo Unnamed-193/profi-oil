@@ -37,6 +37,7 @@
 
     img {
       width: 100%;
+      object-fit: cover;
       height: 100%;
     }
 
@@ -48,6 +49,36 @@
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
       height: mixins.toRem(665);
+    }
+  }
+
+  &__car {
+    max-width: mixins.toRem(631);
+    height: mixins.toRem(318);
+    position: absolute;
+    bottom: 83px;
+    right: 95px;
+
+
+    .carlights {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      top: 17%;
+      right: 4%;
+      pointer-events: none;
+      mix-blend-mode: screen;
+
+      img {
+        mix-blend-mode: screen;
+      }
+    }
+
+    .headlight-right {
+      position: absolute;
+      top: 3%;
+      right: 46%;
+      transform: scaleX(-1);
     }
   }
 
