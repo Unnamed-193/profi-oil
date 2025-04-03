@@ -954,6 +954,7 @@
       img {
         max-width: none;
       }
+
       position: relative;
       z-index: 2;
       border-radius: mixins.toRem(15);
@@ -1088,7 +1089,7 @@
     z-index: 2;
 
     @media (min-width:mixins.toEm(variables.$tablet)) {
-      max-width: mixins.toRem(500);
+      max-width: mixins.toRem(455);
     }
   }
 }
@@ -1129,6 +1130,24 @@
     @include mixins.adaptiveValue("font-size", 45, 32);
   }
 
+  &__logo {
+    opacity: 0;
+    translate: 0 mixins.toRem(30);
+
+    .loaded & {
+      transition:
+        translate var(--globalAnimDuration) var(--globalTransitionTiming),
+        opacity var(--globalAnimDuration) var(--globalTransitionTiming);
+
+      transition-delay: calc(var(--animDuration) * (var(--max_index, 2) + 1.5));
+    }
+
+    .loaded ._watcher-view & {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
   &__button {
     margin-top: auto;
     width: max-content;
@@ -1163,12 +1182,12 @@
     position: relative;
     // opacity: 0;
 
-    --pl: #{mixins.toRem(14)};
+    --pl: #{mixins.toRem(7)};
 
     @include mixins.adaptiveValue("--img_width", 118, 95);
     @include mixins.adaptiveValue("--mb", 70, 30, 1320, 992);
     @include mixins.adaptiveValue("--pt", 13, 9);
-    @include mixins.adaptiveValue("--gap", 25, 11);
+    @include mixins.adaptiveValue("--gap", 20, 10);
 
     &:not(:last-child) {
       margin-bottom: var(--mb);
@@ -1258,11 +1277,9 @@
     }
   }
 
-  &__text {
-    line-height: 1.2;
+  &__text-box {
     translate: mixins.toRem(-30) -50%;
     opacity: 0;
-    white-space: nowrap;
     position: absolute;
     top: 50%;
     left: calc(var(--img_width) + var(--pl) + var(--gap));
@@ -1277,14 +1294,28 @@
       transition-delay: calc(var(--animDuration) * (var(--index, 1) + 2));
     }
 
-    @media (min-width:mixins.toEm(variables.$tablet)) {
-      font-weight: 700;
-    }
-
     .loaded ._watcher-view & {
       translate: 0 -50%;
       opacity: 1;
     }
+  }
+
+  &__title {
+    font-weight: 500;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: var(--white);
+
+    @include mixins.adaptiveValue("font-size", 18, 16);
+    @include mixins.adaptiveValue("margin-bottom", 8, 6);
+  }
+
+  &__text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: var(--white);
+    max-width: mixins.toRem(271);
   }
 }
 
@@ -1300,6 +1331,7 @@
   &__container {
     max-width: mixins.toRem(1320);
     display: grid;
+    align-items: start;
 
     @include mixins.adaptiveValue("padding-bottom", 39.5, 30);
 
@@ -1417,27 +1449,51 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
+      svg {
+
+        // Анимация для красной полоски
+        path[stroke="url(#paint0_linear_103_2127)"] {
+          stroke-dasharray: 300;
+          stroke-dashoffset: 300;
+
+          // Анимация будет запускаться только при наличии класса _watcher-view
+          ._watcher-view & {
+            animation: draw 2s ease-out forwards;
+          }
+        }
+
+        // Анимация для конечной точки
+        circle[cx="309.5"][cy="132.5"] {
+          opacity: 0;
+
+          // Анимация будет запускаться только при наличии класса _watcher-view
+          ._watcher-view & {
+            animation: fadeIn 0.5s 1s forwards;
+          }
+        }
+      }
     }
 
     h2 {
       position: absolute;
       left: 50%;
-      bottom: mixins.toRem(57);
+      bottom: mixins.toRem(70);
       translate: -50% 0;
       display: flex;
       flex-direction: column;
       text-align: center;
-      line-height: math.div(28.25, 23.54);
+      line-height: math.div(22, 15);
 
-      @include mixins.adaptiveValue("font-size", 23.54, 18, 1320, 1100);
-      @include mixins.adaptiveValue("gap", 5, 4);
+      @include mixins.adaptiveValue("font-size", 22, 15, 1320, 1100);
+      @include mixins.adaptiveValue("gap", 8, 5);
 
-      ._blue {
-        color: var(--blue);
+      ._red {
+        color: var(--red);
         line-height: math.div(63.57, 52.97);
         font-weight: 500;
 
-        @include mixins.adaptiveValue("font-size", 52.97, 38.66, 1320, 1100);
+        @include mixins.adaptiveValue("font-size", 50, 35, 1320, 1100);
       }
     }
 
@@ -1468,6 +1524,19 @@
     .loaded ._watcher-view & {
       opacity: 1;
       translate: 0 0;
+    }
+
+    // Ключевые кадры анимации
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
   }
 }
