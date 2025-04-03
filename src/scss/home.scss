@@ -16,7 +16,7 @@
   &::after {
     content: '';
     position: absolute;
-    z-index: 0;
+    z-index: 1;
     bottom: 0;
     height: 100%;
     width: 100%;
@@ -39,29 +39,42 @@
       width: 100%;
       object-fit: cover;
       height: 100%;
-    }
+      // object-position: 100% 0;
 
-    @media (max-width: mixins.toEm(1200)) and (min-width:mixins.toEm(variables.$mobile)) {
-      img {
-        object-position: 63% center;
+      @media (max-width:mixins.toEm(variables.$mobile)) {
+        object-position: center;
       }
-    }
-
-    @media (max-width:mixins.toEm(variables.$mobile)) {
-      height: mixins.toRem(665);
     }
   }
 
   &__car {
-    max-width: mixins.toRem(631);
-    height: mixins.toRem(318);
+    // max-width: mixins.toRem(631);
+    max-height: mixins.toRem(318);
     position: absolute;
-    bottom: 83px;
-    right: 95px;
+    // right: mixins.toRem(95);
+    // bottom: mixins.toRem(83);
+
+    @include mixins.adaptiveValue("max-width", 631, 600, 1920, 1340);
+    @include mixins.adaptiveValue("right", 95, -160, 1920, 1340);
+    @include mixins.adaptiveValue("bottom", 83, 56);
+
+    @media (min-width:mixins.toEm(1921)) {
+        min-width: mixins.toRem(631);
+        min-height: mixins.toEm(347);
+        bottom: mixins.toRem(70);
+      }
+
+    .car {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 2;
+    }
 
 
     .headlights {
       position: absolute;
+      z-index: 2;
       width: 100%;
       height: auto;
       top: 17%;
@@ -121,10 +134,12 @@
 
     @media (max-width:mixins.toEm(variables.$laptop)) {
       padding-top: mixins.toRem(28);
+      padding-bottom: mixins.toRem(75);
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
       padding-top: mixins.toRem(40);
+      padding-bottom: mixins.toRem(35);
     }
   }
 
@@ -132,14 +147,13 @@
     display: flex;
     z-index: 2;
 
-    // @include mixins.adaptiveValue("max-width", 139, 72);
+    @include mixins.adaptiveValue("max-width", 139, 72);
 
-    &:not(:last-child) {
-      @include mixins.adaptiveValue("margin-bottom", 37, 35);
-    }
+    @include mixins.adaptiveValue("margin-bottom", 37, 35);
 
     img {
-      width: 139px;
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -154,16 +168,15 @@
     @media (min-width:mixins.toEm(variables.$mobile)) {
       --translateCoef: -1;
       max-width: mixins.vw(1155, 1320);
+      margin-bottom: mixins.toRem(31);
+    }
 
-      &:not(:last-child) {
-        margin-bottom: mixins.toRem(31);
-      }
+    @media (max-width:mixins.toEm(variables.$laptop)) {
+      margin-bottom: mixins.toRem(20);
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      &:not(:last-child) {
-        margin-bottom: mixins.toRem(251);
-      }
+      margin-bottom: mixins.toRem(251);
     }
 
     svg {
@@ -183,16 +196,16 @@
     letter-spacing: -0.02em;
     text-transform: uppercase;
     text-align: center;
+    margin-bottom: mixins.toRem(31);
 
     @include mixins.adaptiveValue("font-size", 55, 24);
 
-    @media (min-width:mixins.toEm(variables.$mobile)) {
-      --translateCoef: -1;
-      max-width: mixins.vw(1000);
+    @media (max-width:mixins.toEm(variables.$laptop)) {
+      margin-bottom: mixins.toRem(35);
+    }
 
-      &:not(:last-child) {
-        margin-bottom: mixins.toRem(31);
-      }
+    @media (min-width:mixins.toEm(variables.$mobile)) {
+      max-width: mixins.vw(1000);
     }
   }
 
@@ -208,6 +221,11 @@
     @include mixins.adaptiveValue("font-size", 28, 16);
     @include mixins.adaptiveValue("width", 430, 241);
     @include mixins.adaptiveValue("height", 41, 48);
+
+    @media (max-width:mixins.toEm(variables.$laptop)) {
+      margin-bottom: mixins.toRem(75);
+      height: mixins.toRem(27);
+    }
   }
 
   &__bottles {
@@ -215,16 +233,31 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 100px;
     left: 18%;
+    bottom: mixins.toRem(100);
 
+    @include mixins.adaptiveValue("width", 357, 213, 1920);
+    @include mixins.adaptiveValue("height", 367, 238, 1920);
 
     img {
       z-index: 1;
+      width: 100%;
+      height: 100%;
 
-      @media (min-width:mixins.toEm(variables.$mobile)) {}
+      @media (max-width: mixins.toEm(variables.$mobile)) {
+        // Дополнительные стили для мобильных, если нужно
+      }
+    }
 
-      @media (max-width:mixins.toEm(variables.$mobile)) {}
+    @media (max-width: mixins.toEm(variables.$laptop)) {
+      left: 12%;
+      width: mixins.toRem(245);
+      height: mixins.toRem(252);
+      bottom: mixins.toRem(50);
+    }
+
+    @media (max-width: mixins.toEm(variables.$tablet)) {
+      left: 5%;
     }
   }
 

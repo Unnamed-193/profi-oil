@@ -115,6 +115,12 @@ img {
     }
   }
 
+  @media (max-width:mixins.toEm(variables.$laptop)) {
+    width: mixins.toRem(241);
+    height: mixins.toRem(47);
+    font-size: mixins.toRem(18);
+  }
+
   &-white {
     background-color: var(--white);
     color: var(--ozon);
