@@ -119,6 +119,13 @@ img {
     width: mixins.toRem(241);
     height: mixins.toRem(47);
     font-size: mixins.toRem(18);
+    order: 5;
+  }
+
+  @media (max-width:mixins.toEm(variables.$mobileSmall)) {
+    width: 100%;
+    font-size: mixins.toRem(18);
+    border-radius: mixins.toRem(6);
   }
 
   &-white {

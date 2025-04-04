@@ -49,6 +49,7 @@
         object-position: center;
       }
     }
+
   }
 
   &__car {
@@ -137,7 +138,7 @@
         @include mixins.adaptiveValue("right", 25, 30, variables.$mobile, 480);
         @include mixins.adaptiveValue("top", 35, 0, variables.$mobile, 480);
 
-      
+
 
         &__right {
           @include mixins.adaptiveValue("right", 230, 90, variables.$mobile, 480);
@@ -148,7 +149,7 @@
       @media(max-width: mixins.toEm(variables.$mobileSmall)) {
         @include mixins.adaptiveValue("right", 5, 8, variables.$mobileSmall, 320);
         @include mixins.adaptiveValue("top", 43, 23, variables.$mobileSmall, 320);
-       
+
 
         &__right {
           @include mixins.adaptiveValue("right", 200, 130, variables.$mobileSmall, 320);
@@ -164,11 +165,22 @@
     z-index: 3;
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      // background: linear-gradient(360deg, rgba(49, 76, 97, 0) 60.35%, rgba(44, 66, 91, 0.6) 76.12%);
+      height: mixins.toRem(602);
     }
 
-    @media (max-width:mixins.toEm(variables.$mobile)) {
-      height: mixins.toRem(602);
+    @media (max-width:mixins.toEm(variables.$mobileSmall)) {
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: mixins.toRem(217);
+
+        background: linear-gradient(180deg, rgba(17, 41, 69, 0.4) 0%, rgba(17, 41, 69, 0.4) 100%);
+        mix-blend-mode: multiply;
+        opacity: 0.4;
+      }
 
       &::before {
         content: '';
@@ -176,8 +188,9 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: mixins.toRem(217);
-        // background: linear-gradient(180.1deg, rgba(17, 41, 69, 0.4) 11.16%, rgba(17, 41, 69, 0) 99.92%);
+        height: mixins.toRem(264);
+
+        background: linear-gradient(180deg, #6a94b5 0%, #6da0cb 36.49%, rgba(88, 134, 173, 0) 100%);
       }
     }
   }
@@ -230,6 +243,13 @@
     max-width: mixins.vw(1155, 1320);
     margin-bottom: mixins.toRem(31);
 
+    svg {
+      position: relative;
+      border-radius: 100%;
+      fill: #3c6580;
+      filter: blur(60px);
+    }
+
     @include mixins.adaptiveValue("font-size", 32, 24);
 
     @media (max-width:mixins.toEm(variables.$laptop)) {
@@ -272,30 +292,56 @@
 
   }
 
-  &__slogan {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    line-height: 120%;
-    text-align: center;
-    color: var(--white);
-    height: mixins.toRem(41);
-    background: var(--slogan);
-    border-radius: 30px;
+  &__slogan-box {
     margin-bottom: mixins.toRem(140);
-    @include mixins.adaptiveValue("font-size", 28, 16);
+
     @include mixins.adaptiveValue("width", 430, 241);
     @include mixins.adaptiveValue("height", 41, 48);
 
     @media (max-width:mixins.toEm(variables.$laptop)) {
       margin-bottom: mixins.toRem(75);
       height: mixins.toRem(27);
+      border-radius: 25px;
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
+      border-radius: 30px;
+      background: linear-gradient(to right, #FBF2E5 0%, #937137 100%);
+      padding: 1px;
+      position: absolute;
       height: mixins.toRem(48);
-      margin-bottom: auto;
+      margin-bottom: 0;
+
+      @include mixins.adaptiveValue("top", 410, 410, variables.$mobile);
+      @include mixins.adaptiveValue("right", 90, 123, variables.$mobile);
+
+    }
+
+    @media (max-width:mixins.toEm(375)) {
+      @include mixins.adaptiveValue("top", 410, 420, 375, 320);
+      @include mixins.adaptiveValue("right", 123, 70, 375, 320);
+
+    }
+  }
+
+  &__slogan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-weight: 700;
+    border-radius: 30px;
+    line-height: 120%;
+    text-align: center;
+    color: var(--white);
+    background: var(--slogan);
+    border: none;
+    @include mixins.adaptiveValue("font-size", 28, 16);
+
+    @media (max-width:mixins.toEm(variables.$mobile)) {
+      padding-left: mixins.toRem(25);
+      justify-content: flex-start;
     }
   }
 
@@ -307,8 +353,8 @@
     left: 18%;
     bottom: mixins.toRem(100);
 
-    @include mixins.adaptiveValue("width", 357, 213);
-    @include mixins.adaptiveValue("height", 367, 238);
+    @include mixins.adaptiveValue("width", 357, 213, 1920, 768);
+    @include mixins.adaptiveValue("height", 367, 238, 1920, 768);
 
     img {
       z-index: 1;
@@ -326,6 +372,22 @@
 
     @media (max-width: mixins.toEm(variables.$tablet)) {
       @include mixins.adaptiveValue("left", 100, 0, 992, 768, );
+    }
+
+    @media (max-width: mixins.toEm(variables.$mobile)) {
+      bottom: 0;
+      margin-bottom: mixins.toRem(10);
+      width: mixins.toRem(213);
+      height: mixins.toRem(238);
+      position: relative;
+      left: 17px;
+      order: 4;
+      align-self: end;
+    }
+
+    @media (max-width: mixins.toEm(375)) {
+      @include mixins.adaptiveValue("width", 213, 170, 375, 320);
+      @include mixins.adaptiveValue("height", 238, 200, 375, 320);
     }
   }
 
