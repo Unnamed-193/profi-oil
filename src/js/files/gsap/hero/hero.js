@@ -25,14 +25,14 @@ document.addEventListener("DOMContentLoaded", () => {
       autoAlpha: 0,
       duration: 0.5,
       ease: "power1.out"
-    }, "-=0.2"); // Начинается чуть раньше завершения анимации текста
+    }, "-=0.1"); // Начинается чуть раньше завершения анимации текста
   } else {
     tl.from('.hero__slogan-box', { 
       y: 30, 
       autoAlpha: 0, 
       duration: 0.5, 
       ease: "power1.out" 
-    }, "-=0.2");
+    }, "-=0.1");
   }
 
   // 3. Анимация кнопки (после slogan-box)
