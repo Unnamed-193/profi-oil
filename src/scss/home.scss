@@ -56,13 +56,19 @@
 
     @include mixins.adaptiveValue("max-width", 631, 600, 1920, 1340);
     @include mixins.adaptiveValue("right", 95, -160, 1920, 1340);
-    @include mixins.adaptiveValue("bottom", 83, 56);
+    @include mixins.adaptiveValue("bottom", 83, 54);
 
     @media (min-width:mixins.toEm(1921)) {
-        min-width: mixins.toRem(631);
-        min-height: mixins.toEm(347);
-        bottom: mixins.toRem(70);
-      }
+      min-width: mixins.toRem(631);
+      min-height: mixins.toEm(347);
+      bottom: mixins.toRem(70);
+    }
+
+    @media(max-width: mixins.toEm(variables.$laptop)) {
+      @include mixins.adaptiveValue("max-width", 450, 440, variables.$laptop, 768);
+      @include mixins.adaptiveValue("right", 42, -220, variables.$laptop, 768);
+      @include mixins.adaptiveValue("bottom", 60, 55, variables.$laptop, 768);
+    }
 
     .car {
       width: 100%;
@@ -85,14 +91,24 @@
       img {
         mix-blend-mode: screen;
       }
+
+      &__right {
+        position: absolute;
+        top: 3%;
+        right: 46%;
+        transform: scaleX(-1);
+      }
+
+      @media(max-width: mixins.toEm(variables.$laptop)) {
+        top: 7%;
+        right: 6%;
+
+        &__right {
+          right: 37%;
+        }
+      }
     }
 
-    .headlight-right {
-      position: absolute;
-      top: 3%;
-      right: 46%;
-      transform: scaleX(-1);
-    }
   }
 
   &__wrapper {
@@ -236,17 +252,14 @@
     left: 18%;
     bottom: mixins.toRem(100);
 
-    @include mixins.adaptiveValue("width", 357, 213, 1920);
-    @include mixins.adaptiveValue("height", 367, 238, 1920);
+    @include mixins.adaptiveValue("width", 357, 213);
+    @include mixins.adaptiveValue("height", 367, 238);
 
     img {
       z-index: 1;
       width: 100%;
       height: 100%;
-
-      @media (max-width: mixins.toEm(variables.$mobile)) {
-        // Дополнительные стили для мобильных, если нужно
-      }
+      object-fit: cover;
     }
 
     @media (max-width: mixins.toEm(variables.$laptop)) {
@@ -257,7 +270,7 @@
     }
 
     @media (max-width: mixins.toEm(variables.$tablet)) {
-      left: 5%;
+      @include mixins.adaptiveValue("left", 100, 0, 992, 768, );
     }
   }
 
