@@ -25,6 +25,10 @@
     background-position: bottom center;
     background-size: contain;
     mix-blend-mode: lighten;
+
+    @media (max-width:mixins.toEm(variables.$mobile)) {
+      background: none;
+    }
   }
 
   &__bg {
@@ -37,8 +41,8 @@
 
     img {
       width: 100%;
-      object-fit: cover;
       height: 100%;
+      object-fit: cover;
       // object-position: 100% 0;
 
       @media (max-width:mixins.toEm(variables.$mobile)) {
@@ -65,9 +69,21 @@
     }
 
     @media(max-width: mixins.toEm(variables.$laptop)) {
-      @include mixins.adaptiveValue("max-width", 450, 440, variables.$laptop, 768);
-      @include mixins.adaptiveValue("right", 42, -220, variables.$laptop, 768);
-      @include mixins.adaptiveValue("bottom", 60, 55, variables.$laptop, 768);
+      @include mixins.adaptiveValue("max-width", 450, 440, variables.$laptop, 992);
+      @include mixins.adaptiveValue("right", 43, -110, variables.$laptop, 992);
+      @include mixins.adaptiveValue("bottom", 56, 55, variables.$laptop, 992);
+    }
+
+    @media(max-width: mixins.toEm(variables.$tablet)) {
+      @include mixins.adaptiveValue("right", -110, -220, variables.$tablet, 768);
+      bottom: mixins.toRem(50);
+    }
+
+    @media(max-width: mixins.toEm(variables.$mobile)) {
+      right: auto;
+      @include mixins.adaptiveValue("max-width", 540, 258, variables.$mobile, 320);
+      @include mixins.adaptiveValue("bottom", 160, 237, variables.$mobile, 320);
+      @include mixins.adaptiveValue("left", 43, 0, variables.$mobile, 320);
     }
 
     .car {
@@ -99,12 +115,44 @@
         transform: scaleX(-1);
       }
 
+      @media(min-width: mixins.toEm(1921)) {
+        top: 25%;
+        right: 1%;
+
+        &__right {
+          right: 55%;
+        }
+      }
+
       @media(max-width: mixins.toEm(variables.$laptop)) {
         top: 7%;
         right: 6%;
 
         &__right {
           right: 37%;
+        }
+      }
+
+      @media(max-width: mixins.toEm(variables.$mobile)) {
+        @include mixins.adaptiveValue("right", 25, 30, variables.$mobile, 480);
+        @include mixins.adaptiveValue("top", 35, 0, variables.$mobile, 480);
+
+      
+
+        &__right {
+          @include mixins.adaptiveValue("right", 230, 90, variables.$mobile, 480);
+          top: 2%;
+        }
+      }
+
+      @media(max-width: mixins.toEm(variables.$mobileSmall)) {
+        @include mixins.adaptiveValue("right", 5, 8, variables.$mobileSmall, 320);
+        @include mixins.adaptiveValue("top", 43, 23, variables.$mobileSmall, 320);
+       
+
+        &__right {
+          @include mixins.adaptiveValue("right", 200, 130, variables.$mobileSmall, 320);
+          top: 3%;
         }
       }
     }
@@ -116,10 +164,12 @@
     z-index: 3;
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      background: linear-gradient(360deg, rgba(49, 76, 97, 0) 60.35%, rgba(44, 66, 91, 0.6) 76.12%);
+      // background: linear-gradient(360deg, rgba(49, 76, 97, 0) 60.35%, rgba(44, 66, 91, 0.6) 76.12%);
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
+      height: mixins.toRem(602);
+
       &::before {
         content: '';
         position: absolute;
@@ -127,12 +177,9 @@
         left: 0;
         width: 100%;
         height: mixins.toRem(217);
-        background: linear-gradient(180.1deg, rgba(17, 41, 69, 0.4) 11.16%, rgba(17, 41, 69, 0) 99.92%);
+        // background: linear-gradient(180.1deg, rgba(17, 41, 69, 0.4) 11.16%, rgba(17, 41, 69, 0) 99.92%);
       }
     }
-
-
-
   }
 
   &__container {
@@ -154,7 +201,9 @@
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      padding-top: mixins.toRem(40);
+      box-sizing: border-box;
+      height: 100%;
+      padding-top: mixins.toRem(25);
       padding-bottom: mixins.toRem(35);
     }
   }
@@ -178,21 +227,17 @@
     color: var(--white);
     line-height: 1;
     position: relative;
+    max-width: mixins.vw(1155, 1320);
+    margin-bottom: mixins.toRem(31);
 
     @include mixins.adaptiveValue("font-size", 32, 24);
-
-    @media (min-width:mixins.toEm(variables.$mobile)) {
-      --translateCoef: -1;
-      max-width: mixins.vw(1155, 1320);
-      margin-bottom: mixins.toRem(31);
-    }
 
     @media (max-width:mixins.toEm(variables.$laptop)) {
       margin-bottom: mixins.toRem(20);
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      margin-bottom: mixins.toRem(251);
+      margin-bottom: mixins.toRem(25);
     }
 
     svg {
@@ -215,17 +260,22 @@
     margin-bottom: mixins.toRem(31);
 
     @include mixins.adaptiveValue("font-size", 55, 24);
+    @include mixins.adaptiveValue("max-width", 1000, 344);
 
     @media (max-width:mixins.toEm(variables.$laptop)) {
       margin-bottom: mixins.toRem(35);
     }
 
-    @media (min-width:mixins.toEm(variables.$mobile)) {
-      max-width: mixins.vw(1000);
+    @media (max-width:mixins.toEm(variables.$mobile)) {
+      margin-bottom: auto;
     }
+
   }
 
   &__slogan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 700;
     line-height: 120%;
     text-align: center;
@@ -241,6 +291,11 @@
     @media (max-width:mixins.toEm(variables.$laptop)) {
       margin-bottom: mixins.toRem(75);
       height: mixins.toRem(27);
+    }
+
+    @media (max-width:mixins.toEm(variables.$mobile)) {
+      height: mixins.toRem(48);
+      margin-bottom: auto;
     }
   }
 
