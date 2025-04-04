@@ -53,11 +53,8 @@
   }
 
   &__car {
-    // max-width: mixins.toRem(631);
     max-height: mixins.toRem(318);
     position: absolute;
-    // right: mixins.toRem(95);
-    // bottom: mixins.toRem(83);
 
     @include mixins.adaptiveValue("max-width", 631, 600, 1920, 1340);
     @include mixins.adaptiveValue("right", 95, -160, 1920, 1340);
@@ -117,11 +114,11 @@
       }
 
       @media(min-width: mixins.toEm(1921)) {
-        top: 25%;
-        right: 1%;
+        top: mixins.toRem(75);
+        right: mixins.toRem(8);
 
         &__right {
-          right: 55%;
+          right: mixins.toRem(350);
         }
       }
 
