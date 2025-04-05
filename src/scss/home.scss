@@ -1344,6 +1344,11 @@
     width: max-content;
     opacity: 0;
     translate: 0 mixins.toRem(30);
+    @include mixins.adaptiveValue("font-size", 16, 14, 1920, 1024);
+
+    @media (max-width: mixins.toEm(1024)) {
+      font-size: mixins.toRem(16);
+    }
 
     .loaded & {
       transition:
@@ -1375,7 +1380,7 @@
 
     --pl: #{mixins.toRem(7)};
 
-    @include mixins.adaptiveValue("--img_width", 118, 95);
+    @include mixins.adaptiveValue("--img_width", 118, 94, 1920, 1320);
     @include mixins.adaptiveValue("--mb", 70, 30, 1320, 992);
     @include mixins.adaptiveValue("--pt", 13, 9);
     @include mixins.adaptiveValue("--gap", 20, 10);
@@ -1420,7 +1425,8 @@
     background-color: var(--dark-yellow);
     width: 100%;
     position: relative;
-    height: calc(var(--img_width) + (var(--pt) * 2));
+    // height: calc(var(--img_width) + (var(--pt) * 2));
+    min-height: mixins.toRem(129);
     width: calc(var(--img_width) + (var(--pl) * 2));
     scale: 0;
 
@@ -1497,8 +1503,12 @@
     text-transform: uppercase;
     color: var(--white);
 
-    @include mixins.adaptiveValue("font-size", 18, 16);
+    @include mixins.adaptiveValue("font-size", 18, 14, 1920, 1320);
     @include mixins.adaptiveValue("margin-bottom", 8, 6);
+
+    @media (max-width:mixins.toEm(variables.$tablet)) {
+      font-size: mixins.toRem(16);
+    }
   }
 
   &__text {
@@ -1507,6 +1517,12 @@
     line-height: 120%;
     color: var(--white);
     max-width: mixins.toRem(271);
+
+    @include mixins.adaptiveValue("font-size", 16, 14, 1920, 1320);
+
+    @media (max-width:mixins.toEm(variables.$tablet)) {
+      font-size: mixins.toRem(16);
+    }
   }
 }
 
@@ -1656,7 +1672,7 @@
 
 
     @media (max-width: mixins.toEm(1100)) {
-      margin-bottom: mixins.toRem(14);
+      margin-bottom: mixins.toRem(30);
     }
 
     .loaded & {
@@ -1689,15 +1705,12 @@
 
           // Анимация будет запускаться только при наличии класса _watcher-view
           ._watcher-view & {
-            animation: fadeIn 0.5s 1s forwards;
+            animation: fadeIn 0.5s 1.5s forwards;
           }
         }
 
-        @media(max-width: mixins.toEm(1100)) {
-          path {
-            fill: var(--grey-light);
-          }
 
+        @media(max-width: mixins.toEm(1320)) {
           path[stroke="url(#paint0_linear_361_2295)"] {
             stroke-dasharray: 250;
             stroke-dashoffset: 250;
@@ -1714,6 +1727,12 @@
             ._watcher-view & {
               animation: fadeIn 0.5s 1.5s forwards;
             }
+          }
+        }
+
+        @media(max-width: mixins.toEm(1100)) {
+          path {
+            fill: var(--grey-light);
           }
         }
       }
@@ -2031,7 +2050,11 @@
 
     a {
       white-space: nowrap;
-      @include mixins.adaptiveValue("font-size", 16, 14);
+      font-size: mixins.toRem(18);
+
+      @media (max-width: mixins.toEm(variables.$laptop)) {
+        font-size: mixins.toRem(14);
+      }
     }
   }
 

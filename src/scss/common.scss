@@ -221,10 +221,9 @@ img {
   color: var(--white);
   background-color: var(--red);
   border: mixins.toRem(1) solid var(--red);
-  padding: mixins.toRem(7) mixins.toRem(19);
+  padding: mixins.toRem(8) mixins.toRem(20);
   border-radius: mixins.toRem(7);
   line-height: math.div(24, 20);
-  @include mixins.adaptiveValue("font-size", 20, 14);
 
   .loaded & {
     transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
