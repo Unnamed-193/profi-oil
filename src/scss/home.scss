@@ -1522,15 +1522,26 @@
   &__container {
     max-width: mixins.toRem(1320);
     display: grid;
-    align-items: start;
+    align-items: center;
+    padding-top: mixins.toRem(20);
+    margin-top: mixins.toRem(-16);
 
-    @include mixins.adaptiveValue("padding-bottom", 39.5, 30);
+    padding-bottom: mixins.toRem(120);
 
-    @media (min-width:mixins.toEm(1100)) {
+    @media (min-width: mixins.toEm(variables.$laptop)) {
       grid-template-columns: 1fr mixins.toRem(370) 1fr;
       gap: mixins.toRem(28);
-      padding-top: mixins.toRem(39.5);
-      margin-top: mixins.toRem(-16);
+    }
+
+
+    @media (min-width: mixins.toEm(1100)) and (max-width:mixins.toEm(variables.$laptop)) {
+      grid-template-columns: 1fr mixins.toRem(296) 1fr;
+      gap: mixins.toRem(28);
+      padding-bottom: mixins.toRem(100);
+    }
+
+    @media (max-width: mixins.toEm(1100)) {
+      @include mixins.adaptiveValue("padding-bottom", 100, 57, 1100);
     }
   }
 
@@ -1544,24 +1555,35 @@
     gap: mixins.toRem(20);
     align-items: center;
     line-height: math.div(26.4, 22);
+    padding: mixins.toRem(25) mixins.toRem(40);
 
-    @include mixins.adaptiveValue("padding-left", 40, 10);
-    @include mixins.adaptiveValue("padding-right", 40, 10);
-    @include mixins.adaptiveValue("padding-top", 25, 15);
-    @include mixins.adaptiveValue("padding-bottom", 25, 15);
-    @include mixins.adaptiveValue("font-size", 22, 16);
+    @include mixins.adaptiveValue("font-size", 22, 18, 1920, 1320);
+    @include mixins.adaptiveValue("font-size", 18, 16, 1100);
+
+
 
     @media (min-width:mixins.toEm(1100)) {
       background-color: var(--light);
     }
 
+    @media (max-width: mixins.toEm(variables.$laptop)) {
+      padding: mixins.toRem(20);
+      --icnsz: #{mixins.toRem(65)};
+    }
+
     @media (max-width: mixins.toEm(1100)) {
+      --icnsz: #{mixins.toRem(60)};
       background-color: var(--white);
-      --icnsz: #{mixins.toRem(86)};
-      row-gap: mixins.toRem(0);
+      row-gap: 0;
+      padding: mixins.toRem(15) mixins.toRem(10);
+
 
       &:not(:last-child) {
         margin-bottom: mixins.toRem(15);
+      }
+
+      &:last-child {
+        grid-template-rows: 1fr;
       }
     }
 
@@ -1589,6 +1611,10 @@
       height: 100%;
     }
 
+    @media (max-width: mixins.toEm(variables.$laptop)) {
+      width: mixins.toRem(70);
+    }
+
     @media (max-width: mixins.toEm(1100)) {
       grid-row: span 2;
     }
@@ -1613,7 +1639,8 @@
     }
 
     @media (max-width: mixins.toEm(1100)) {
-      margin-bottom: auto;
+      color: var(--grey-dark);
+
     }
   }
 
@@ -1625,6 +1652,8 @@
     @media (min-width:mixins.toEm(1100)) {
       margin-top: mixins.toRem(-39.5);
     }
+
+
 
     @media (max-width: mixins.toEm(1100)) {
       margin-bottom: mixins.toRem(14);
@@ -1663,6 +1692,30 @@
             animation: fadeIn 0.5s 1s forwards;
           }
         }
+
+        @media(max-width: mixins.toEm(1100)) {
+          path {
+            fill: var(--grey-light);
+          }
+
+          path[stroke="url(#paint0_linear_361_2295)"] {
+            stroke-dasharray: 250;
+            stroke-dashoffset: 250;
+
+            ._watcher-view & {
+              animation: draw 2s 0.5s ease-out forwards;
+            }
+          }
+
+          circle[cx="247.83"][cy="117.099"] {
+            opacity: 0;
+
+            // Анимация будет запускаться только при наличии класса _watcher-view
+            ._watcher-view & {
+              animation: fadeIn 0.5s 1.5s forwards;
+            }
+          }
+        }
       }
     }
 
@@ -1676,15 +1729,16 @@
       text-align: center;
       line-height: math.div(22, 15);
 
-      @include mixins.adaptiveValue("font-size", 22, 15, 1320, 1100);
+      @include mixins.adaptiveValue("font-size", 22, 18, 1920, 1320);
       @include mixins.adaptiveValue("gap", 8, 5);
+      @include mixins.adaptiveValue("bottom", 60, 60, 1320, 1100);
 
       ._red {
         color: var(--red);
         line-height: math.div(63.57, 52.97);
         font-weight: 500;
 
-        @include mixins.adaptiveValue("font-size", 50, 35, 1320, 1100);
+        @include mixins.adaptiveValue("font-size", 50, 35, 1920, 1100);
       }
     }
 
@@ -1708,7 +1762,7 @@
       }
 
       h2 {
-        bottom: mixins.toRem(55);
+        bottom: mixins.toRem(45);
       }
     }
 
@@ -2235,11 +2289,15 @@
 
 
     @include mixins.adaptiveValue("padding-top", 65, 50);
-    @include mixins.adaptiveValue("gap", 79, 30, 1320, 767);
+    @include mixins.adaptiveValue("gap", 79, 35, 1920, variables.$laptop);
+
+    @media (max-width:mixins.toEm(variables.$laptop)) {
+      text-align: center;
+      flex-direction: column;
+    }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      flex-direction: column;
-      text-align: center;
+      gap: mixins.toRem(30);
     }
   }
 

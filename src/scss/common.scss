@@ -26,6 +26,18 @@ img {
   }
 }
 
+._md5dn {
+  @media (max-width:mixins.toEm(variables.$laptop)) {
+    display: none !important;
+  }
+}
+
+._mmd5dn {
+  @media (min-width:mixins.toEm(variables.$laptop)) {
+    display: none !important;
+  }
+}
+
 ._md2dn {
   @media (max-width:mixins.toEm(variables.$tablet)) {
     display: none !important;
