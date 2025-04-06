@@ -99,6 +99,7 @@ function setTechItemStyle(techItemWraps) {
     const parent = e.closest('.right-tech');
 
     let width = parent.offsetWidth;
+    
     e.style.setProperty('--width', `${width-4}px`);
   })
 }

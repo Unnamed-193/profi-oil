@@ -94,8 +94,10 @@ body {
 
     // Добавляем кастомный padding на 1320px
     @media (max-width: 1320px) and (min-width: 1100px) {
-      padding-right: 150px !important;
-      padding-left: 150px !important;
+      @include mixins.adaptiveValue("padding-right", 150, 15, 1320, 1100);
+      @include mixins.adaptiveValue("padding-left", 150, 15, 1320, 1100);
+      // padding-right: 150px !important;
+      // padding-left: 150px !important;
     }
   }
 }
@@ -118,8 +120,10 @@ body {
 
     // Добавляем кастомный padding на 1320px
     @media (max-width: 1320px) and (min-width: 1100px) {
-      padding-right: 150px !important;
-      padding-left: 150px !important;
+      @include mixins.adaptiveValue("padding-right", 150, 15, 1320, 1100);
+        @include mixins.adaptiveValue("padding-left", 150, 15, 1320, 1100);
+        // padding-right: 150px !important;
+        // padding-left: 150px !important;
     }
 
     @media (max-width: variables.$pc) {
