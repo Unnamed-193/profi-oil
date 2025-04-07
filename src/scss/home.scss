@@ -460,6 +460,8 @@
 //==========================================================================================
 .advantages {
 
+  background: var(--grey-light);
+
   &__container {
     padding-top: mixins.toRem(140);
     padding-bottom: mixins.toRem(140);
