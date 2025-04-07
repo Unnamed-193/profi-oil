@@ -393,7 +393,7 @@
 //====================================================================================================
 .ow {
   &__container {
-    max-width: mixins.toRem(1320);
+    max-width: mixins.toRem(1350);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -462,47 +462,30 @@
 
   background: var(--grey-light);
 
-  &__container {
-    padding-top: mixins.toRem(140);
-    padding-bottom: mixins.toRem(140);
-    max-width: mixins.toRem(1320);
-    display: grid;
-    position: relative;
-    @include mixins.adaptiveValue("gap", 132, 40);
-
-    @media (min-width:mixins.toEm(variables.$tablet)) {
-      grid-template-columns: 1fr 1.2fr;
-    }
+  @media (max-width:mixins.toEm(variables.$mobile)) {
+    background: var(--white);
   }
 
-  &__head {
+  &__container {
+    padding-top: mixins.toRem(70);
+    padding-bottom: mixins.toRem(70);
+    max-width: mixins.toRem(1350);
     display: flex;
     flex-direction: column;
-    @include mixins.adaptiveValue("gap", 25, 10);
-  }
+    position: relative;
+    gap: mixins.toRem(40);
 
-  &__subtitle {
-    text-transform: uppercase;
-    font-weight: 500;
-    line-height: math.div(15, 22);
-    opacity: 0;
-    translate: 0 mixins.toRem(30);
+
+    @media (max-width:mixins.toEm(variables.$laptop)) {
+      padding-top: mixins.toRem(50);
+      padding-bottom: mixins.toRem(50);
+      gap: mixins.toRem(35);
+    }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      line-height: math.div(25, 18);
-    }
-
-    @include mixins.adaptiveValue("font-size", 22, 18);
-
-    .loaded & {
-      transition:
-        translate var(--globalAnimDuration) var(--globalTransitionTiming),
-        opacity var(--globalAnimDuration) var(--globalTransitionTiming);
-    }
-
-    .loaded ._watcher-view & {
-      opacity: 1;
-      translate: 0 0;
+      padding-top: mixins.toRem(90);
+      padding-bottom: mixins.toRem(90);
+      gap: mixins.toRem(40);
     }
   }
 
@@ -512,7 +495,8 @@
     opacity: 0;
     translate: 0 mixins.toRem(30);
 
-    @include mixins.adaptiveValue("font-size", 50, 30);
+    @include mixins.adaptiveValue("font-size", 50, 32);
+    color: var(--mainColor);
 
     .loaded & {
       transition:
@@ -528,16 +512,16 @@
   }
 
   &__body {
-    @include mixins.adaptiveValue("gap", 20, 10);
+    @include mixins.adaptiveValue("column-gap", 20, 10);
 
     @media (min-width:mixins.toEm(variables.$mobile)) {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
       display: flex;
-      padding-bottom: mixins.toRem(15);
+      padding-bottom: mixins.toRem(5);
       overflow-x: auto;
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
@@ -557,17 +541,121 @@
       scroll-snap-align: start;
     }
   }
+
+  &__whos {
+    display: flex;
+    gap: mixins.toRem(30);
+
+    @media (max-width:mixins.toEm(variables.$laptop)) {
+      gap: mixins.toRem(15);
+    }
+
+    @media (max-width:mixins.toEm(variables.$mobile)) {
+      flex-direction: column;
+      gap: mixins.toRem(20);
+    }
+  }
+}
+
+.item-advantages-who {
+  position: relative;
+  min-height: mixins.toRem(188);
+  border-radius: mixins.toRem(15);
+  flex: 1 1 50%;
+  opacity: 0;
+  translate: 0 mixins.toRem(30);
+
+  &__title {
+    position: relative;
+    z-index: 1;
+    border-radius: mixins.toRem(15);
+    padding: mixins.toRem(16) mixins.toRem(20) mixins.toRem(74);
+    color: var(--white);
+    background: linear-gradient(210deg, #e5ceac 0%, #b58e5c 100%);
+
+    font-weight: 500;
+    font-size: mixins.toRem(22);
+    line-height: 120%;
+    text-transform: uppercase;
+
+    @media (max-width:mixins.toEm(variables.$laptop)) {
+      font-size: mixins.toRem(18);
+    }
+
+    @media (max-width:mixins.toEm(variables.$mobile)) {
+      font-size: mixins.toRem(16);
+      padding: mixins.toRem(15) mixins.toRem(15) mixins.toRem(70);
+    }
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+    margin-top: mixins.toRem(-60);
+    padding: mixins.toRem(20);
+    background: var(--white);
+    border-radius: mixins.toRem(15);
+    min-height: calc(100% - 52px);
+
+    @media (max-width:mixins.toEm(variables.$mobile)) {
+      background: var(--grey-light);
+      padding: mixins.toRem(15) mixins.toRem(10) mixins.toRem(25);
+      // height: 100%;
+    }
+  }
+
+  &__text {
+    color: var(--grey-dark);
+
+    font-size: mixins.toRem(22);
+    line-height: 130%;
+
+    @media (max-width:mixins.toEm(variables.$laptop)) {
+      font-size: mixins.toRem(18);
+      color: var(--black);
+    }
+
+    @media (max-width:mixins.toEm(variables.$mobile)) {
+      font-size: mixins.toRem(16);
+    }
+  }
+
+  @media (max-width:mixins.toEm(variables.$mobile)) {
+    min-height: mixins.toRem(128);
+    max-height: mixins.toRem(180);
+
+
+    &__title,
+    &__inner {
+      border-radius: mixins.toRem(10);
+    }
+  }
+
+  .loaded & {
+    transition:
+      translate var(--globalAnimDuration) var(--globalTransitionTiming),
+      opacity var(--globalAnimDuration) var(--globalTransitionTiming);
+    transition-delay: calc(var(--globalAnimDuration) * 1.7);
+  }
+
+  .loaded ._watcher-view & {
+    opacity: 1;
+    translate: 0 0;
+  }
 }
 
 .item-advantages {
-  background-color: var(--light);
+  background-color: var(--white);
   border-radius: mixins.toRem(15);
   padding: mixins.toRem(20);
+  min-height: mixins.toRem(316);
   opacity: 0;
   translate: 0 mixins.toRem(30);
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
   @media (min-width:mixins.toEm(variables.$mobile)) {
     &:nth-child(odd) {
@@ -579,13 +667,20 @@
     }
   }
 
-  @media (max-width:mixins.toEm(variables.$mobile)) {
+  @media (max-width:mixins.toEm(variables.$laptop)) {
+    min-height: mixins.toRem(245);
     transform-origin: left bottom;
+  }
+
+  @media (max-width:mixins.toEm(variables.$mobile)) {
+    min-height: mixins.toRem(251);
+    transform-origin: left bottom;
+    background: var(--grey-light);
   }
 
   .loaded & {
     transition:
-      background-color 0.3s ease 0s,
+      background 0.3s ease 0s,
       scale 0.3s ease 0s,
       translate var(--globalAnimDuration) var(--globalTransitionTiming),
       opacity var(--globalAnimDuration) var(--globalTransitionTiming);
@@ -596,7 +691,7 @@
   }
 
   &:hover {
-    background-color: var(--red);
+    background: linear-gradient(160deg, #e5ceac 0%, #b58e5c 100%);
     color: var(--white);
     --bdc: var(--white);
 
@@ -610,25 +705,25 @@
     translate: 0 0;
   }
 
-  &__bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(276.61deg, #BC1F29 -2.76%, #E2000F 98.82%);
-    pointer-events: none;
-    opacity: 0;
-    border-radius: mixins.toRem(15);
+  // &__bg {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   background: blue;
+  //   pointer-events: none;
+  //   opacity: 0;
+  //   border-radius: mixins.toRem(15);
 
-    .loaded & {
-      transition: opacity 0.3s ease 0s;
-    }
+  //   .loaded & {
+  //     transition: opacity 0.3s ease 0s;
+  //   }
 
-    .item-advantages:hover & {
-      opacity: 1;
-    }
-  }
+  //   .item-advantages:hover & {
+  //     opacity: 1;
+  //   }
+  // }
 
   &__head {
     display: flex;
@@ -639,7 +734,7 @@
     z-index: 2;
 
     &:not(:last-child) {
-      @include mixins.adaptiveValue("margin-bottom", 32, 22);
+      margin-bottom: auto;
     }
   }
 
@@ -660,7 +755,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: var(--red);
+      background-color: #F9F9F9;
       clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%);
 
       .loaded & {
@@ -691,11 +786,19 @@
     line-height: math.div(28.6, 22);
     position: relative;
     z-index: 2;
+    font-size: mixins.toRem(22);
 
     @include mixins.adaptiveValue("font-size", 22, 18);
 
-    @media (max-width:mixins.toEm(variables.$mobile)) {
+    @media (max-width:mixins.toEm(variables.$laptop)) {
       line-height: math.div(23.4, 18);
+      font-size: mixins.toRem(18);
+    }
+
+    @media (max-width:mixins.toEm(variables.$tablet)) {
+      hyphens: auto;
+      line-height: math.div(23.4, 18);
+      font-size: mixins.toRem(16);
     }
 
     .loaded & {
@@ -1188,7 +1291,7 @@
     flex: 1 1 auto;
     position: relative;
     z-index: 2;
-    // max-width: mixins.toRem(1320);
+    max-width: mixins.toRem(1350);
     display: grid;
     justify-content: space-between;
     align-items: center;
@@ -1558,7 +1661,7 @@
   }
 
   &__container {
-    max-width: mixins.toRem(1320);
+    max-width: mixins.toRem(1350);
     display: grid;
     align-items: center;
     padding-top: mixins.toRem(20);
@@ -1833,7 +1936,7 @@
   &__container {
     padding-top: mixins.toRem(140);
     padding-bottom: mixins.toRem(70);
-    max-width: mixins.toRem(1320);
+    max-width: mixins.toRem(1350);
   }
 
   &__head {
@@ -2129,7 +2232,7 @@
 .assort {
 
   &__container {
-    max-width: mixins.toRem(1320);
+    max-width: mixins.toRem(1350);
     padding-top: mixins.toRem(70);
 
     @include mixins.adaptiveValue("padding-bottom", 100, 84);
@@ -2377,7 +2480,7 @@
     align-items: flex-start;
     gap: mixins.toRem(10);
     justify-content: space-between;
-    max-width: mixins.toRem(1320);
+    max-width: mixins.toRem(1350);
 
     @include mixins.adaptiveValue("padding-top", 80, 39);
     @include mixins.adaptiveValue("padding-bottom", 120, 71);

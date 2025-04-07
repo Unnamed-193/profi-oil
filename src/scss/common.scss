@@ -14,6 +14,10 @@ img {
   display: none !important;
 }
 
+.mb {
+  margin-bottom: mixins.toRem(10);
+}
+
 ._md1dn {
   @media (max-width:mixins.toEm(variables.$pc)) {
     display: none !important;
@@ -256,7 +260,6 @@ img {
 .scrollbar {
   position: absolute;
   left: mixins.toRem(15);
-  bottom: var(--bottom, #{mixins.toRem(140)});
   height: mixins.toRem(3);
   width: calc(100vw - mixins.toRem(30));
   background-color: var(--scrollbar_bg);
@@ -266,6 +269,18 @@ img {
   @media (min-width:mixins.toEm(variables.$mobile)) {
     display: none;
   }
+
+  @media (max-width: mixins.toEm(variables.$mobile)) {
+    @include mixins.adaptiveValue('bottom', 405, 405, variables.$mobile, 495);
+  }
+
+  @media (max-width: mixins.toEm(495)) {
+    @include mixins.adaptiveValue('bottom', 405, 425, 495, 389);
+  }
+  @media (max-width: mixins.toEm(389)) {
+    @include mixins.adaptiveValue('bottom', 425, 465, 389, 320);
+  }
+
 
   i {
     position: absolute;
