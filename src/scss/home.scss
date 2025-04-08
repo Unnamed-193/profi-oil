@@ -2096,7 +2096,7 @@
       overflow-y: auto;
       min-height: mixins.toRem(613);
       max-height: mixins.toRem(709);
-      gap: mixins.toRem(50);
+      gap: mixins.toRem(90);
       /* Скрываем скролл-бар */
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -2152,11 +2152,11 @@
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
-    gap: mixins.toRem(20);
+    gap: mixins.toRem(38);
     min-height: auto;
 
     &._watcher-view {
-      min-height: mixins.toRem(568);
+      min-height: mixins.toRem(504);
 
       .item-evidence__count {
         color: var(--grey-dark);
@@ -2366,10 +2366,9 @@
       }
 
       @media (max-width:mixins.toEm(variables.$mobile)) {
-        max-width: mixins.toRem(250);
 
         &:not(:last-child) {
-          margin-bottom: mixins.toRem(15);
+          margin-bottom: mixins.toRem(20);
         }
       }
     }
