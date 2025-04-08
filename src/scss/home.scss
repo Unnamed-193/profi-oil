@@ -2111,20 +2111,18 @@
 
 
   &__item {
-    scroll-snap-align: start;
-    scroll-margin: 30px 0 0 0;
     opacity: 0;
     translate: 0 mixins.toRem(30);
-
+    
     .loaded & {
       transition:
-        translate var(--globalAnimDuration) var(--globalTransitionTiming),
+      translate var(--globalAnimDuration) var(--globalTransitionTiming),
         opacity var(--globalAnimDuration) var(--globalTransitionTiming);
-
-      --delay: calc((var(--globalAnimDuration) / 4) * var(--index, 1) + (var(--globalAnimDuration) / 2));
+        
+        --delay: calc((var(--globalAnimDuration) / 4) * var(--index, 1) + (var(--globalAnimDuration) / 2));
       transition-delay: var(--delay);
     }
-
+    
     .loaded ._watcher-view & {
       opacity: 1;
       translate: 0 0;
@@ -2137,22 +2135,23 @@
   display: grid;
   grid-template-columns: auto 758px;
   min-height: mixins.toRem(190);
-
-
+  
+  
   @media (min-width:mixins.toEm(variables.$mobile)) {
     gap: mixins.toRem(20);
   }
-
+  
   @media (max-width:mixins.toEm(variables.$laptop)) {
     grid-template-columns: auto 592px;
     min-height: mixins.toRem(162);
   }
-
+  
   @media (max-width:mixins.toEm(variables.$mobile)) {
+    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
-    gap: mixins.toRem(38);
-    min-height: 100%;
+    // gap: mixins.toRem(38);
+    min-height: mixins.toRem(504);
   }
 
   &__count {
