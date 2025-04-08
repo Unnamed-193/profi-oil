@@ -494,9 +494,8 @@
     line-height: math.div(60, 50);
     opacity: 0;
     translate: 0 mixins.toRem(30);
-
-    @include mixins.adaptiveValue("font-size", 50, 32);
     color: var(--mainColor);
+    @include mixins.adaptiveValue("font-size", 50, 32);
 
     .loaded & {
       transition:
@@ -691,7 +690,6 @@
   }
 
   &:hover {
-    background: linear-gradient(160deg, #e5ceac 0%, #b58e5c 100%);
     color: var(--white);
     --bdc: var(--white);
 
@@ -705,25 +703,25 @@
     translate: 0 0;
   }
 
-  // &__bg {
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 100%;
-  //   background: blue;
-  //   pointer-events: none;
-  //   opacity: 0;
-  //   border-radius: mixins.toRem(15);
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #e5ceac 0%, #b58e5c 100%);
+    pointer-events: none;
+    opacity: 0;
+    border-radius: mixins.toRem(15);
 
-  //   .loaded & {
-  //     transition: opacity 0.3s ease 0s;
-  //   }
+    .loaded & {
+      transition: opacity 0.3s ease 0s;
+    }
 
-  //   .item-advantages:hover & {
-  //     opacity: 1;
-  //   }
-  // }
+    .item-advantages:hover & {
+      opacity: 1;
+    }
+  }
 
   &__head {
     display: flex;
@@ -746,26 +744,19 @@
     justify-content: center;
     align-items: center;
 
-    @include mixins.adaptiveValue("width", 86, 75);
-    @include mixins.adaptiveValue("height", 98, 86);
+    width: mixins.toRem(101);
+    height: mixins.toRem(101);
 
-    ._hexagon {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #F9F9F9;
-      clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%);
-
-      .loaded & {
-        transition: background-color 0.3s ease 0s;
-      }
-
-      .item-advantages:hover & {
-        background-color: var(--white);
-      }
+    @media (max-width: mixins.toEm(variables.$laptop)) {
+      width: mixins.toRem(70);
+      height: mixins.toRem(70);
     }
+
+    @media (max-width: mixins.toEm(variables.$mobile)) {
+      width: mixins.toRem(86);
+      height: mixins.toRem(86);
+    }
+
   }
 
   &__index {
@@ -809,406 +800,523 @@
 
 .icon-item-advantages {
   position: relative;
-  width: calc(100% - mixins.toRem(4));
-  height: calc(100% - mixins.toRem(4));
-  background-color: var(--light);
-  clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%);
 
-  &__bg {
-    position: absolute;
-    top: 0;
-    left: 0;
+  svg {
     width: 100%;
     height: 100%;
-    background: #E2000F;
-    opacity: 0;
-
-    .loaded & {
-      transition: opacity 0.3s ease 0s;
-    }
-
-    .item-advantages:hover & {
-      opacity: 1;
-    }
   }
 
-  &__gear {
-    position: absolute;
-    aspect-ratio: 1;
-
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    &,
-    * {
-      .loaded & {
-        transition: fill 0.3s ease 0s, stroke 0.3s ease 0s, rotate 0.4s ease 0s;
-      }
-    }
-
-    .item-advantages:hover & {
-      rotate: -180deg;
-
-      [fill] {
-        fill: var(--white);
-      }
-
-      [stroke] {
-        stroke: var(--white);
-      }
-    }
-
-    &_big {
-      width: mixins.percent(44, 86);
-      left: mixins.percent(5, 86);
-      top: mixins.percent(24, 98);
-    }
-
-    &_small {
-      width: mixins.percent(29, 86);
-      top: mixins.percent(21.62, 98);
-      right: mixins.percent(6, 86);
-    }
+  .shape {
+    translate: 0 0;
+    transition: translate 0.2s ease;
+    will-change: translate;
   }
 
-  &__gear2 {
-    position: absolute;
-    aspect-ratio: 1;
+  .item-advantages:hover & .shape {
+    translate: 111px 94px;
+  }
 
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    &,
+  &__speed {
     * {
       .loaded & {
         transition: all 0.3s ease 0s;
       }
     }
 
-    .item-advantages:hover & {
-      ._fill {
-        &[fill] {
-          fill: var(--light);
-        }
 
-        &[stroke] {
-          stroke: var(--light);
-        }
-      }
+    .icon-element {
+      transition: fill 0.3s ease, stroke 0.3s ease;
 
-      ._hole {
-        &[fill] {
-          fill: var(--red);
-        }
-
-        &[stroke] {
-          stroke: var(--red);
-        }
+      &--transparent {
+        fill: none;
+        stroke: none;
       }
     }
 
-    &_big {
-      bottom: mixins.percent(9, 98);
-      left: mixins.toRem(2);
-      width: mixins.percent(51, 86);
+    .gold-element {
+      fill: var(--white);
+      stroke: var(--white);
+      transition: opacity 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
 
-      .item-advantages:hover & {
-        rotate: 180deg;
+      &--transparent {
+        opacity: 1;
+        fill: transparent;
+        stroke: var(--white);
       }
     }
 
-    &_small {
-      top: mixins.percent(13, 98);
-      right: mixins.percent(4, 86);
-      width: mixins.percent(36, 86);
 
-      .item-advantages:hover & {
-        rotate: -180deg;
-      }
+
+    .item-advantages:hover & .gold-element {
+      fill: var(--gold);
+      stroke: var(--gold);
+    }
+
+    .item-advantages:hover & .gold-element--transparent {
+      fill: var(--white);
+      stroke: var(--gold);
     }
   }
 
-  &__circle {
-    position: absolute;
-    right: mixins.toRem(4);
-    bottom: 0;
-    background-color: var(--red);
-    border-radius: 50%;
-    border: mixins.toRem(2) solid var(--light);
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    z-index: 5;
-
-    @include mixins.adaptiveValue("width", 37, 32);
-    @include mixins.adaptiveValue("height", 37, 32);
-
-    .loaded & {
-      transition: background-color 0.3s ease 0s;
-    }
-
-
-    svg {
-      flex: 0 0 100%;
-      translate: mixins.toRem(2) 0;
-
+  &__engine {
+    * {
       .loaded & {
-        * {
-          transition: all 0.3s ease 0s;
-        }
+        transition: all 0.3s ease 0s;
       }
     }
 
-    &_arrows {
-      justify-content: flex-end;
-
-      .item-advantages:hover & {
-        background-color: var(--white);
-      }
-
-      svg {
-        .loaded & {
-          transition: translate 0.4s ease 0s;
-        }
-
-        .item-advantages:hover & {
-          translate: calc(100% + mixins.toRem(2)) 0;
-
-          [fill] {
-            fill: var(--red);
-          }
-
-          [stroke] {
-            stroke: var(--red);
-          }
-        }
-      }
+    .engine {
+      transition: all 0.3s ease 0s;
     }
 
-    &_chem {
-      justify-content: center;
-      align-items: center;
+    .item-advantages:hover & .engine {
+      stroke: var(--gold);
     }
   }
 
   &__shield {
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    translate: -50% -50%;
-    width: mixins.percent(57, 86);
-    height: mixins.percent(59, 98);
-
     * {
       .loaded & {
-        transition: fill 0.3s ease 0s, stroke 0.3s ease 0s;
-      }
-    }
 
-    .item-advantages:hover & {
-      [fill] {
-        fill: var(--white);
-      }
-
-      [stroke] {
-        stroke: var(--white);
-      }
-    }
-  }
-
-  &__piston {
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    translate: -50% -50%;
-    width: mixins.percent(18, 86);
-    height: mixins.percent(40, 98);
-
-    * {
-      .loaded & {
-        transition: fill 0.3s ease 0s, stroke 0.3s ease 0s;
-      }
-    }
-
-    .item-advantages:hover & {
-      [fill] {
-        fill: var(--red);
-      }
-
-      [stroke] {
-        stroke: var(--red);
-      }
-    }
-  }
-
-  &__snow {
-    position: absolute;
-    background-color: var(--white);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    z-index: 5;
-
-    svg {
-      width: mixins.percent(21.805, 26.33);
-      height: mixins.percent(21.805, 26.33);
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      translate: -50% -50%;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: radial-gradient(50% 50% at 50% 50%, transparent 50.65%, rgba(7, 126, 212, 0.61) 100%);
-      z-index: -1;
-      visibility: hidden;
-
-      .item-advantages:hover & {
-        scale: 5;
-        opacity: 0;
-        visibility: visible;
-
-        .loaded & {
-          transition: scale 0.3s ease 0s, opacity 0.6s ease 0s;
-        }
-      }
-    }
-
-    &_big {
-      top: mixins.percent(5.31, 98);
-      right: mixins.percent(7.85, 86);
-
-      @include mixins.adaptiveValue("width", 26.33, 24);
-
-      svg {
-        translate: mixins.toRem(.5) mixins.toRem(-0.5);
-      }
-    }
-
-    &_small {
-      bottom: mixins.percent(9, 98);
-      left: mixins.percent(5, 86);
-
-      svg {
-        translate: mixins.toRem(-0.25) mixins.toRem(0.25);
-      }
-    }
-  }
-
-  &__blob {
-    position: absolute;
-    right: mixins.toRem(0);
-    top: mixins.percent(7, 98);
-    z-index: 0;
-    opacity: 0;
-
-    .loaded & {
-      transition: opacity 0.3s ease 0s;
-    }
-
-    svg {
-      // width: mixins.percent(82,86);
-      // height: mixins.percent(90,98);
-    }
-
-    .item-advantages:hover & {
-      opacity: 1;
-    }
-  }
-
-  &__grid {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    background-color: var(--grey);
-    clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: mixins.percent(69, 86);
-    height: mixins.percent(74, 98);
-    overflow: hidden;
-
-    .loaded & {
-      transition: background-color 0.3s ease 0s;
-    }
-
-    .item-advantages:hover & {
-      background-color: var(--yellow);
-    }
-
-    svg {
-      width: 100%;
-      height: 100%;
-      scale: 1.2 1.09;
-
-      .loaded & {
-        transition: scale 0.3s ease 0s;
-      }
-
-      .item-advantages:hover & {
-        scale: 1.5 1.09;
-      }
-    }
-  }
-
-  &__speed {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    translate: -50% -50%;
-    width: mixins.percent(72, 86);
-    height: mixins.percent(42, 98);
-
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    * {
-      .loaded & {
         transition: all 0.3s ease 0s;
       }
     }
 
-    .item-advantages:hover & {
-      [fill] {
-        fill: var(--white);
-      }
-
-      [stroke] {
-        stroke: var(--white);
-      }
-    }
-
-    ._arrow {
-      position: absolute;
-      left: 0;
-      bottom: mixins.toRem(1);
-      transform-origin: bottom center;
-
-      .loaded & {
-        transition: all 0.3s ease 0s;
-      }
-
-      .item-advantages:hover & {
-        rotate: 115deg;
-        left: mixins.toRem(-4);
-        bottom: mixins.toRem(7);
-      }
+    .item-advantages:hover & &--shield {
+      fill: var(--gold);
+      stroke: var(--gold);
     }
   }
+
+  &__certificate {
+    * {
+      .loaded & {
+
+        transition: all 0.3s ease 0s;
+      }
+    }
+
+    .item-advantages:hover & &--tranparent {
+      stroke: none;
+    }
+
+    .item-advantages:hover & &--gold {
+      stroke: var(--gold);
+    }
+
+    .item-advantages:hover & &--gold {
+      stroke: var(--gold);
+    }
+
+    .item-advantages:hover & &--fill {
+      fill: var(--gold);
+      stroke: var(--white);
+    }
+  }
+
+
+  .bg-shape {
+    fill: var(--gold);
+    stroke: #F9F9F9;
+    transition: fill 0.3s ease, stroke 0.3s ease;
+  }
+
+  .inner-bg {
+    fill: url(#paint1_linear_361_1941);
+    stroke: url(#paint2_linear_361_1941);
+    transition: fill 0.3s ease, stroke 0.3s ease;
+  }
+
+  .item-advantages:hover & .bg-shape {
+    fill: var(--grey-light);
+  }
+
+  .item-advantages:hover & .inner-bg {
+    fill: var(--white);
+    stroke: url(#paint1_linear_361_1508);
+  }
+
+  // background-color: var(--light);
+  // clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%);
+
+
+  // &__gear {
+  //   position: absolute;
+  //   aspect-ratio: 1;
+
+  //   svg {
+  //     width: 100%;
+  //     height: 100%;
+  //   }
+
+  //   &,
+  //   * {
+  //     .loaded & {
+  //       transition: fill 0.3s ease 0s, stroke 0.3s ease 0s, rotate 0.4s ease 0s;
+  //     }
+  //   }
+
+  //   .item-advantages:hover & {
+  //     rotate: -180deg;
+
+  //     [fill] {
+  //       fill: var(--white);
+  //     }
+
+  //     [stroke] {
+  //       stroke: var(--white);
+  //     }
+  //   }
+
+  //   &_big {
+  //     width: mixins.percent(44, 86);
+  //     left: mixins.percent(5, 86);
+  //     top: mixins.percent(24, 98);
+  //   }
+
+  //   &_small {
+  //     width: mixins.percent(29, 86);
+  //     top: mixins.percent(21.62, 98);
+  //     right: mixins.percent(6, 86);
+  //   }
+  // }
+
+  // &__gear2 {
+  //   position: absolute;
+  //   aspect-ratio: 1;
+
+  //   svg {
+  //     width: 100%;
+  //     height: 100%;
+  //   }
+
+  //   &,
+  //   * {
+  //     .loaded & {
+  //       transition: all 0.3s ease 0s;
+  //     }
+  //   }
+
+  //   .item-advantages:hover & {
+  //     ._fill {
+  //       &[fill] {
+  //         fill: var(--light);
+  //       }
+
+  //       &[stroke] {
+  //         stroke: var(--light);
+  //       }
+  //     }
+
+  //     ._hole {
+  //       &[fill] {
+  //         fill: var(--red);
+  //       }
+
+  //       &[stroke] {
+  //         stroke: var(--red);
+  //       }
+  //     }
+  //   }
+
+  //   &_big {
+  //     bottom: mixins.percent(9, 98);
+  //     left: mixins.toRem(2);
+  //     width: mixins.percent(51, 86);
+
+  //     .item-advantages:hover & {
+  //       rotate: 180deg;
+  //     }
+  //   }
+
+  //   &_small {
+  //     top: mixins.percent(13, 98);
+  //     right: mixins.percent(4, 86);
+  //     width: mixins.percent(36, 86);
+
+  //     .item-advantages:hover & {
+  //       rotate: -180deg;
+  //     }
+  //   }
+  // }
+
+  // &__circle {
+  //   position: absolute;
+  //   right: mixins.toRem(4);
+  //   bottom: 0;
+  //   background-color: var(--red);
+  //   border-radius: 50%;
+  //   border: mixins.toRem(2) solid var(--light);
+  //   display: flex;
+  //   align-items: center;
+  //   overflow: hidden;
+  //   z-index: 5;
+
+  //   @include mixins.adaptiveValue("width", 37, 32);
+  //   @include mixins.adaptiveValue("height", 37, 32);
+
+  //   .loaded & {
+  //     transition: background-color 0.3s ease 0s;
+  //   }
+
+
+  //   svg {
+  //     flex: 0 0 100%;
+  //     translate: mixins.toRem(2) 0;
+
+  //     .loaded & {
+  //       * {
+  //         transition: all 0.3s ease 0s;
+  //       }
+  //     }
+  //   }
+
+  //   &_arrows {
+  //     justify-content: flex-end;
+
+  //     .item-advantages:hover & {
+  //       background-color: var(--white);
+  //     }
+
+  //     svg {
+  //       .loaded & {
+  //         transition: translate 0.4s ease 0s;
+  //       }
+
+  //       .item-advantages:hover & {
+  //         translate: calc(100% + mixins.toRem(2)) 0;
+
+  //         [fill] {
+  //           fill: var(--red);
+  //         }
+
+  //         [stroke] {
+  //           stroke: var(--red);
+  //         }
+  //       }
+  //     }
+  //   }
+
+  //   &_chem {
+  //     justify-content: center;
+  //     align-items: center;
+  //   }
+  // }
+
+  // &__shield {
+  //   position: absolute;
+  //   top: 55%;
+  //   left: 50%;
+  //   translate: -50% -50%;
+  //   width: mixins.percent(57, 86);
+  //   height: mixins.percent(59, 98);
+
+  //   * {
+  //     .loaded & {
+  //       transition: fill 0.3s ease 0s, stroke 0.3s ease 0s;
+  //     }
+  //   }
+
+  //   .item-advantages:hover & {
+  //     [fill] {
+  //       fill: var(--white);
+  //     }
+
+  //     [stroke] {
+  //       stroke: var(--white);
+  //     }
+  //   }
+  // }
+
+  // &__piston {
+  //   position: absolute;
+  //   top: 55%;
+  //   left: 50%;
+  //   translate: -50% -50%;
+  //   width: mixins.percent(18, 86);
+  //   height: mixins.percent(40, 98);
+
+  //   * {
+  //     .loaded & {
+  //       transition: fill 0.3s ease 0s, stroke 0.3s ease 0s;
+  //     }
+  //   }
+
+  //   .item-advantages:hover & {
+  //     [fill] {
+  //       fill: var(--red);
+  //     }
+
+  //     [stroke] {
+  //       stroke: var(--red);
+  //     }
+  //   }
+  // }
+
+  // &__snow {
+  //   position: absolute;
+  //   background-color: var(--white);
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   aspect-ratio: 1;
+  //   border-radius: 50%;
+  //   z-index: 5;
+
+  //   svg {
+  //     width: mixins.percent(21.805, 26.33);
+  //     height: mixins.percent(21.805, 26.33);
+  //   }
+
+  //   &::before {
+  //     content: '';
+  //     position: absolute;
+  //     top: 50%;
+  //     left: 50%;
+  //     translate: -50% -50%;
+  //     width: 100%;
+  //     height: 100%;
+  //     border-radius: 50%;
+  //     background: radial-gradient(50% 50% at 50% 50%, transparent 50.65%, rgba(7, 126, 212, 0.61) 100%);
+  //     z-index: -1;
+  //     visibility: hidden;
+
+  //     .item-advantages:hover & {
+  //       scale: 5;
+  //       opacity: 0;
+  //       visibility: visible;
+
+  //       .loaded & {
+  //         transition: scale 0.3s ease 0s, opacity 0.6s ease 0s;
+  //       }
+  //     }
+  //   }
+
+  //   &_big {
+  //     top: mixins.percent(5.31, 98);
+  //     right: mixins.percent(7.85, 86);
+
+  //     @include mixins.adaptiveValue("width", 26.33, 24);
+
+  //     svg {
+  //       translate: mixins.toRem(.5) mixins.toRem(-0.5);
+  //     }
+  //   }
+
+  //   &_small {
+  //     bottom: mixins.percent(9, 98);
+  //     left: mixins.percent(5, 86);
+
+  //     svg {
+  //       translate: mixins.toRem(-0.25) mixins.toRem(0.25);
+  //     }
+  //   }
+  // }
+
+  // &__blob {
+  //   position: absolute;
+  //   right: mixins.toRem(0);
+  //   top: mixins.percent(7, 98);
+  //   z-index: 0;
+  //   opacity: 0;
+
+  //   .loaded & {
+  //     transition: opacity 0.3s ease 0s;
+  //   }
+
+  //   svg {
+  //     // width: mixins.percent(82,86);
+  //     // height: mixins.percent(90,98);
+  //   }
+
+  //   .item-advantages:hover & {
+  //     opacity: 1;
+  //   }
+  // }
+
+  // &__grid {
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   translate: -50% -50%;
+  //   background-color: var(--grey);
+  //   clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%);
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   width: mixins.percent(69, 86);
+  //   height: mixins.percent(74, 98);
+  //   overflow: hidden;
+
+  //   .loaded & {
+  //     transition: background-color 0.3s ease 0s;
+  //   }
+
+  //   .item-advantages:hover & {
+  //     background-color: var(--yellow);
+  //   }
+
+  //   svg {
+  //     width: 100%;
+  //     height: 100%;
+  //     scale: 1.2 1.09;
+
+  //     .loaded & {
+  //       transition: scale 0.3s ease 0s;
+  //     }
+
+  //     .item-advantages:hover & {
+  //       scale: 1.5 1.09;
+  //     }
+  //   }
+  // }
+
+  // &__speed {
+  //   position: absolute;
+  //   top: 40%;
+  //   left: 50%;
+  //   translate: -50% -50%;
+  //   width: mixins.percent(72, 86);
+  //   height: mixins.percent(42, 98);
+
+  //   svg {
+  //     width: 100%;
+  //     height: 100%;
+  //   }
+
+  //   * {
+  //     .loaded & {
+  //       transition: all 0.3s ease 0s;
+  //     }
+  //   }
+
+  //   .item-advantages:hover & {
+  //     [fill] {
+  //       fill: var(--white);
+  //     }
+
+  //     [stroke] {
+  //       stroke: var(--white);
+  //     }
+  //   }
+
+  //   ._arrow {
+  //     position: absolute;
+  //     left: 0;
+  //     bottom: mixins.toRem(1);
+  //     transform-origin: bottom center;
+
+  //     .loaded & {
+  //       transition: all 0.3s ease 0s;
+  //     }
+
+  //     .item-advantages:hover & {
+  //       rotate: 115deg;
+  //       left: mixins.toRem(-4);
+  //       bottom: mixins.toRem(7);
+  //     }
+  //   }
+  // }
 }
 
 //==========================================================================================
