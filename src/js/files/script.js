@@ -1,11 +1,8 @@
 // Подключение функционала "Чертоги Фрилансера"
-import { debounce, isMobile } from "./functions.js";
 // Подключение списка активных модулей
-import { mhzModules } from "./modules.js";
-import { gotoBlock } from "./scroll/gotoblock.js";
 
-import './gsap/hero/hero.js'
-import './gsap/ow/ow.js'
+import './gsap/hero/hero.js';
+import './gsap/ow/ow.js';
 
 const mmd1 = matchMedia('(min-width: 1920px)');
 const md3 = matchMedia('(min-width: 1920px)');
@@ -137,3 +134,30 @@ function createScrollbar(parent) {
 
   return scrollbar;
 }
+document.addEventListener("DOMContentLoaded", function() {
+  const items = document.querySelectorAll('.item-evidence');
+  
+  const options = {
+    root: null, // Использовать viewport
+    rootMargin: '0px',
+    threshold: 0.5 // Срабатывает, когда элемент на 50% виден
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const countElement = entry.target.querySelector('.item-evidence__count');
+      
+      if (entry.isIntersecting) {
+        // Добавляем класс активного состояния
+        countElement.classList.add('active');
+      } else {
+        // Убираем класс активного состояния
+        countElement.classList.remove('active');
+      }
+    });
+  }, options);
+
+  items.forEach(item => {
+    observer.observe(item);
+  });
+});
