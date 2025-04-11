@@ -291,17 +291,18 @@
 
   &__slogan-box {
     margin-bottom: mixins.toRem(140);
-
-    @include mixins.adaptiveValue("width", 430, 241);
+    width: mixins.toRem(430);
     @include mixins.adaptiveValue("height", 41, 48);
 
     @media (max-width:mixins.toEm(variables.$laptop)) {
+      width: mixins.toRem(303);
       margin-bottom: mixins.toRem(75);
       height: mixins.toRem(27);
       border-radius: 25px;
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
+      width: mixins.toRem(241);
       border-radius: 30px;
       background: linear-gradient(to right, #FBF2E5 0%, #937137 100%);
       padding: 1px;
@@ -310,7 +311,7 @@
       margin-bottom: 0;
 
       @include mixins.adaptiveValue("top", 410, 410, variables.$mobile);
-      @include mixins.adaptiveValue("right", 90, 123, variables.$mobile);
+      @include mixins.adaptiveValue("right", 110, 123, variables.$mobile);
 
     }
 
@@ -333,10 +334,15 @@
     text-align: center;
     color: var(--white);
     background: var(--slogan);
+    font-size: mixins.toRem(28);
     border: none;
-    @include mixins.adaptiveValue("font-size", 28, 16);
+
+    @media (max-width:mixins.toEm(variables.$laptop)) {
+      font-size: mixins.toRem(20);
+    }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
+      font-size: mixins.toRem(16);
       padding-left: mixins.toRem(25);
       justify-content: flex-start;
     }
