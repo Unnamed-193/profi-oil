@@ -41,6 +41,7 @@ const galleries = document.querySelectorAll('[data-gallery]');
 if (galleries.length) {
 	let galleyItems = [];
 	galleries.forEach(gallery => {
+    
 		galleyItems.push({
 			gallery,
 			galleryClass: lightGallery(gallery, {
