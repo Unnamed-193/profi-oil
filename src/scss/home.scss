@@ -1927,6 +1927,13 @@
 
       svg {
 
+        path[stroke^="url("] {
+          -webkit-backface-visibility: hidden;
+          /* Фикс для рендеринга */
+          -webkit-transform: translateZ(0);
+          /* Аппаратное ускорение */
+        }
+
         // Анимация для красной полоски
         path[stroke="url(#paint0_linear_103_2127)"] {
           stroke-dasharray: 300;
