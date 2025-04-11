@@ -1927,7 +1927,7 @@
 
       svg {
 
-        path[stroke^="url("] {
+        path[stroke^="url()"] {
           -webkit-backface-visibility: hidden;
           /* Фикс для рендеринга */
           -webkit-transform: translateZ(0);
