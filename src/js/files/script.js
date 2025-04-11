@@ -1,8 +1,12 @@
 // Подключение функционала "Чертоги Фрилансера"
+import { debounce, isMobile } from "./functions.js";
 // Подключение списка активных модулей
+import { mhzModules } from "./modules.js";
+import { gotoBlock } from "./scroll/gotoblock.js";
 
-import './gsap/hero/hero.js';
-import './gsap/ow/ow.js';
+import './gsap/hero/hero.js'
+import './gsap/ow/ow.js'
+import './getCurrentYear.js';
 
 const mmd1 = matchMedia('(min-width: 1920px)');
 const md3 = matchMedia('(min-width: 1920px)');
@@ -134,30 +138,40 @@ function createScrollbar(parent) {
 
   return scrollbar;
 }
-document.addEventListener("DOMContentLoaded", function() {
-  const items = document.querySelectorAll('.item-evidence');
-  
-  const options = {
-    root: null, // Использовать viewport
-    rootMargin: '0px',
-    threshold: 0.5 // Срабатывает, когда элемент на 50% виден
-  };
 
+document.addEventListener('DOMContentLoaded', function() {
+  // Получаем все цифры
+  const countElements = document.querySelectorAll('.item-evidence__count');
+  
+  // Настройки Intersection Observer
+  const observerOptions = {
+    root: null, // отслеживаем относительно viewport
+    threshold: 0.2, // срабатывает, когда 20% элемента в зоне видимости
+    rootMargin: '0px' // без отступов
+  };
+  
+  // Создаем наблюдатель
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      const countElement = entry.target.querySelector('.item-evidence__count');
+      // Находим цифру внутри текущего элемента
+      console.log(entry.isIntersecting);
       
-      if (entry.isIntersecting) {
-        // Добавляем класс активного состояния
-        countElement.classList.add('active');
-      } else {
-        // Убираем класс активного состояния
-        countElement.classList.remove('active');
+      const countElement = entry.target.parentElement.querySelector('.item-evidence__count');
+      if (countElement) {
+        if (entry.isIntersecting) {
+          // Элемент виден — добавляем класс `active`
+          countElement.classList.add('active');
+        } else {
+          // Элемент скрылся — убираем класс `active`
+          countElement.classList.remove('active');
+        }
       }
     });
-  }, options);
-
-  items.forEach(item => {
-    observer.observe(item);
+  }, observerOptions);
+  
+  // Наблюдаем за всеми блоками `.item-evidence__content`
+  const contentBlocks = document.querySelectorAll('.item-evidence__content');
+  contentBlocks.forEach(block => {
+    observer.observe(block);
   });
 });

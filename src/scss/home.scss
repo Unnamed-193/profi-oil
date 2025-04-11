@@ -2697,6 +2697,12 @@
     p {
       line-height: math.div(24, 16);
       font-size: mixins.toRem(16);
+
+      .footer__year {
+        line-height: inherit;
+        font-size: inherit;
+        opacity: 1;
+      }
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
