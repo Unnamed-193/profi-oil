@@ -30,17 +30,6 @@ img {
   }
 }
 
-._md5dn {
-  @media (max-width:mixins.toEm(variables.$laptop)) {
-    display: none !important;
-  }
-}
-
-._mmd5dn {
-  @media (min-width:mixins.toEm(variables.$laptop)) {
-    display: none !important;
-  }
-}
 
 ._md2dn {
   @media (max-width:mixins.toEm(variables.$tablet)) {
@@ -74,6 +63,18 @@ img {
 
 ._mmd4dn {
   @media (min-width:mixins.toEm(variables.$mobileSmall)) {
+    display: none !important;
+  }
+}
+
+._md5dn {
+  @media (max-width:mixins.toEm(variables.$laptop)) {
+    display: none !important;
+  }
+}
+
+._mmd5dn {
+  @media (min-width:mixins.toEm(variables.$laptop)) {
     display: none !important;
   }
 }
@@ -277,6 +278,7 @@ img {
   @media (max-width: mixins.toEm(495)) {
     @include mixins.adaptiveValue('bottom', 405, 425, 495, 389);
   }
+
   @media (max-width: mixins.toEm(389)) {
     @include mixins.adaptiveValue('bottom', 425, 465, 389, 320);
   }

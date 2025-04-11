@@ -2498,7 +2498,7 @@
   }
 
   &__image {
-    max-width: mixins.toRem(164);
+    max-width: mixins.toRem(180);
   }
 
   &__name {
@@ -2533,7 +2533,7 @@
     text-align: center;
     margin-top: auto;
 
-    @media (min-width:mixins.toEm(variables.$mobile)) {
+    @media (min-width:mixins.toEm(variables.$laptop)) {
       &:has(a:nth-child(2)) {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -2546,15 +2546,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: mixins.toRem(63);
 
-    @media (min-width:mixins.toEm(variables.$mobile)) {
-      min-height: mixins.toRem(61);
+    @media (max-width:mixins.toEm(variables.$laptop)) {
+      min-height: mixins.toRem(46);
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      br {
-        display: none;
-      }
+      min-height: mixins.toRem(40);
+      font-size: mixins.toRem(12);
     }
   }
 
