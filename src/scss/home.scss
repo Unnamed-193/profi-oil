@@ -1902,21 +1902,23 @@
   &__graph {
     position: relative;
     opacity: 0;
-    translate: 0 mixins.toRem(30);
+    -webkit-transform: translateY(30px);
+    transform: translateY(mixins.toRem(30));
 
     @media (min-width:mixins.toEm(1100)) {
       margin-top: mixins.toRem(-39.5);
     }
-
-
 
     @media (max-width: mixins.toEm(1100)) {
       margin-bottom: mixins.toRem(30);
     }
 
     .loaded & {
+      -webkit-transition:
+        -webkit-transform var(--globalAnimDuration) var(--globalTransitionTiming),
+        opacity var(--globalAnimDuration) var(--globalTransitionTiming);
       transition:
-        translate var(--globalAnimDuration) var(--globalTransitionTiming),
+        transform var(--globalAnimDuration) var(--globalTransitionTiming),
         opacity var(--globalAnimDuration) var(--globalTransitionTiming);
     }
 
@@ -1926,12 +1928,11 @@
       align-items: center;
 
       svg {
-
         path[stroke^="url()"] {
           -webkit-backface-visibility: hidden;
-          /* Фикс для рендеринга */
+          backface-visibility: hidden;
           -webkit-transform: translateZ(0);
-          /* Аппаратное ускорение */
+          transform: translateZ(0);
         }
 
         // Анимация для красной полоски
@@ -1941,6 +1942,7 @@
 
           // Анимация будет запускаться только при наличии класса _watcher-view
           ._watcher-view & {
+            -webkit-animation: draw 2s 0.5s ease-out forwards;
             animation: draw 2s 0.5s ease-out forwards;
           }
         }
@@ -1951,10 +1953,10 @@
 
           // Анимация будет запускаться только при наличии класса _watcher-view
           ._watcher-view & {
+            -webkit-animation: fadeIn 0.5s 1.5s forwards;
             animation: fadeIn 0.5s 1.5s forwards;
           }
         }
-
 
         @media(max-width: mixins.toEm(1320)) {
           path[stroke="url(#paint0_linear_361_2295)"] {
@@ -1962,6 +1964,7 @@
             stroke-dashoffset: 250;
 
             ._watcher-view & {
+              -webkit-animation: draw 2s 0.5s ease-out forwards;
               animation: draw 2s 0.5s ease-out forwards;
             }
           }
@@ -1971,6 +1974,7 @@
 
             // Анимация будет запускаться только при наличии класса _watcher-view
             ._watcher-view & {
+              -webkit-animation: fadeIn 0.5s 1.5s forwards;
               animation: fadeIn 0.5s 1.5s forwards;
             }
           }
@@ -1988,7 +1992,8 @@
       position: absolute;
       left: 50%;
       bottom: mixins.toRem(70);
-      translate: -50% 0;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       text-align: center;
@@ -2033,7 +2038,8 @@
 
     .loaded ._watcher-view & {
       opacity: 1;
-      translate: 0 0;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
     }
 
     // Ключевые кадры анимации
