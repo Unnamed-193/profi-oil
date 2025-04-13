@@ -2091,8 +2091,7 @@
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
       padding-top: mixins.toRem(45);
-      padding-bottom: mixins.toRem(20);
-      margin-bottom: mixins.toRem(203);
+      padding-bottom: mixins.toRem(0);
     }
   }
 
@@ -2115,14 +2114,6 @@
       margin-bottom: mixins.toRem(35);
     }
 
-    @media (max-width:mixins.toEm(variables.$mobile)) {
-      --header-height: 84px;
-      position: sticky;
-      top: var(--header-height);
-      margin-bottom: mixins.toRem(544);
-      z-index: 99;
-    }
-
     .loaded ._watcher-view & {
       opacity: 1;
       translate: 0 0;
@@ -2138,7 +2129,6 @@
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
       position: relative;
-      margin: -504px auto 0;
       gap: 0;
     }
   }
@@ -2185,11 +2175,11 @@
   @media (max-width:mixins.toEm(variables.$mobile)) {
     position: sticky;
     background: var(--white);
-    top: 230px;
+    top: 20px;
     display: flex;
     flex-direction: column;
     gap: mixins.toRem(38);
-    height: mixins.toRem(504);
+    min-height: 100vh;
     transition: all 0.5s ease;
 
     &-1 {
@@ -2202,6 +2192,7 @@
 
     &-3 {
       transform: translateY(calc(var(--header-height) * 2));
+      min-height: mixins.toRem(928);
     }
 
   }
@@ -2453,7 +2444,11 @@
     max-width: mixins.toRem(1350);
     padding-top: mixins.toRem(70);
 
-    @include mixins.adaptiveValue("padding-bottom", 100, 84);
+    @include mixins.adaptiveValue("padding-bottom", 100, 90);
+
+    @media (max-width:mixins.toEm(variables.$mobile)) {
+      margin-top: mixins.toRem(-215);
+    }
   }
 
   &__title {
