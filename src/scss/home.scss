@@ -490,7 +490,7 @@
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
       padding-top: mixins.toRem(90);
-      padding-bottom: mixins.toRem(90);
+      padding-bottom: mixins.toRem(45);
       gap: mixins.toRem(40);
     }
   }
@@ -2083,7 +2083,7 @@
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      padding-top: mixins.toRem(90);
+      padding-top: mixins.toRem(45);
       padding-bottom: mixins.toRem(20);
       margin-bottom: mixins.toRem(203);
     }
