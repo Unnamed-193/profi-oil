@@ -266,21 +266,14 @@ img {
   background-color: var(--scrollbar_bg);
   border-radius: mixins.toRem(9999999);
   overflow: hidden;
+  bottom: mixins.toRem(395);
 
   @media (min-width:mixins.toEm(variables.$mobile)) {
     display: none;
   }
 
-  @media (max-width: mixins.toEm(variables.$mobile)) {
-    @include mixins.adaptiveValue('bottom', 405, 405, variables.$mobile, 495);
-  }
-
-  @media (max-width: mixins.toEm(495)) {
-    @include mixins.adaptiveValue('bottom', 405, 425, 495, 389);
-  }
-
-  @media (max-width: mixins.toEm(389)) {
-    @include mixins.adaptiveValue('bottom', 425, 465, 389, 320);
+  @media (max-width: mixins.toEm(374.98)) {
+    @include mixins.adaptiveValue('bottom', 395, 410, 374.98, 320);
   }
 
 

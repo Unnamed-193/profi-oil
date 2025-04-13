@@ -514,6 +514,11 @@
       opacity: 1;
       translate: 0 0;
     }
+
+    @media (max-width:mixins.toEm(variables.$mobile)) {
+      max-width: mixins.toRem(377);
+    }
+
   }
 
   &__body {
@@ -621,7 +626,9 @@
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
+      text-wrap: balance;
       font-size: mixins.toRem(16);
+      max-width: mixins.toRem(323);
     }
   }
 
