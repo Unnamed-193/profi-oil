@@ -1933,6 +1933,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      transform: translateZ(0);
 
       @-webkit-keyframes draw {
         to {
@@ -1959,6 +1960,9 @@
       }
 
       svg {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+
         path[stroke^="url()"] {
           -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
@@ -1974,6 +1978,7 @@
           shape-rendering: geometricPrecision;
           -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
+          will-change: transform;
 
           ._watcher-view & {
             -webkit-animation: draw 2s 0.5s ease-out forwards;
@@ -2000,6 +2005,7 @@
             -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
             stroke-width: 22.1247px;
+            will-change: transform;
 
             ._watcher-view & {
               -webkit-animation: draw 2s 0.5s ease-out forwards;
