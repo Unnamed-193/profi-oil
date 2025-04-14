@@ -2138,7 +2138,7 @@
       margin-bottom: mixins.toRem(40);
     }
 
-    @media (min-height: 749.98px) {
+    @media (max-width:mixins.toEm(variables.$mobile)) and (min-height: 750px) {
       --header-height: 20px;
       position: sticky;
       top: var(--header-height);
@@ -2152,7 +2152,6 @@
     }
   }
 
-  @media (max-width:mixins.toEm(variables.$mobile)) {}
 
   &__body {
     display: flex;
@@ -2164,7 +2163,7 @@
       gap: 0;
     }
 
-    @media (min-height: 749.98px) {
+    @media (max-width:mixins.toEm(variables.$mobile)) and (min-height: 750px) {
       margin-top: mixins.toRem(-544);
     }
 
@@ -2217,7 +2216,7 @@
   @media (max-width:mixins.toEm(variables.$mobile)) {
     position: sticky;
     background: var(--white);
-    top: 138px;
+    top: 20px;
     display: flex;
     flex-direction: column;
     gap: mixins.toRem(15);
@@ -2238,8 +2237,8 @@
 
   }
 
-  @media(max-height: 749.98px) {
-    top: 20px;
+  @media (max-width: mixins.toEm(variables.$mobile)) and (min-height: 750px) {
+    top: 138px;
   }
 
 
