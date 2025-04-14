@@ -225,14 +225,3 @@ document.addEventListener("DOMContentLoaded", () => {
   mobileMediaQuery.addListener(handleMediaChange);
   handleMediaChange(mobileMediaQuery);
 });
-
-if (window.innerWidth <= 1320) {
-  setTimeout(() => {
-     document.querySelector('.path-red-line-mobile').style.animation = 'draw 2s 0.5s ease-out forwards';
-  }, 10000);
- 
-} else {
- setTimeout(() => {
-   document.querySelector('.path-red-line').style.animation = 'draw 2s 0.5s ease-out forwards';
- }, 10000);
-}
