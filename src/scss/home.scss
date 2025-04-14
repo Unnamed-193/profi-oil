@@ -2138,7 +2138,7 @@
       margin-bottom: mixins.toRem(40);
     }
 
-    @media (min-height: 700px) {
+    @media only screen and (min-height: mixins.toEm(700)) {
       --header-height: 20px;
       position: sticky;
       top: var(--header-height);
@@ -2164,7 +2164,7 @@
       gap: 0;
     }
 
-    @media (min-height: 700px) {
+    @media only screen and (min-height: mixins.toEm(700)) {
       margin-top: mixins.toRem(-544);
     }
 
@@ -2238,7 +2238,7 @@
 
   }
 
-  @media (max-height: 700px) {
+  @media only screen and (max-height: mixins.toEm(700)) {
     top: 20px;
   }
 
