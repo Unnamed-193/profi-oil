@@ -2181,6 +2181,10 @@
   grid-template-columns: auto 758px;
   min-height: mixins.toRem(190);
 
+  @media (min-width: mixins.toEm(variables.$maxWidth)) {
+    grid-template-columns: 1fr 1fr;
+  }
+
   @media (min-width:mixins.toEm(variables.$mobile)) {
     gap: mixins.toRem(20);
   }
@@ -2371,6 +2375,10 @@
       .item-evidence__image {
         translate: -295px 0;
         opacity: 1;
+
+        @media (min-width: mixins.toEm(variables.$maxWidth)) {
+          translate: -90% 0;
+        }
       }
     }
   }
