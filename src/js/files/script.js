@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
         item.querySelector(".item-evidence__content").classList.remove("active");
         item.querySelector(".item-evidence__count").classList.remove("active");
       });
-      window.removeEventListener("scroll", handleEvidenceItems);
+      window.removeEventListener("scroll", handleEvidenceItems, { passive: true });
       window.removeEventListener("resize", handleEvidenceItems);
     }
   };
