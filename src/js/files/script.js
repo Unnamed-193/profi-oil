@@ -1,12 +1,9 @@
 // Подключение функционала "Чертоги Фрилансера"
-import { debounce, isMobile } from "./functions.js";
 // Подключение списка активных модулей
-import { mhzModules } from "./modules.js";
-import { gotoBlock } from "./scroll/gotoblock.js";
 
-import './gsap/hero/hero.js'
-import './gsap/ow/ow.js'
 import './getCurrentYear.js';
+import './gsap/hero/hero.js';
+import './gsap/ow/ow.js';
 
 const mmd1 = matchMedia('(min-width: 1920px)');
 const md3 = matchMedia('(min-width: 1920px)');
@@ -139,39 +136,92 @@ function createScrollbar(parent) {
   return scrollbar;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Получаем все цифры
-  const countElements = document.querySelectorAll('.item-evidence__count');
+document.addEventListener("DOMContentLoaded", () => {
+  // Проверяем ширину экрана и инициализируем только на мобильных
+  const mobileMediaQuery = window.matchMedia('(max-width: 767px)');
   
-  // Настройки Intersection Observer
-  const observerOptions = {
-    root: null, // отслеживаем относительно viewport
-    threshold: 0.2, // срабатывает, когда 20% элемента в зоне видимости
-    rootMargin: '0px' // без отступов
+  // Функции для проверки видимости и перекрытия
+  const isElementCovered = (element) => {
+    const rect = element.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const topElement = document.elementFromPoint(centerX, centerY);
+    return topElement !== element && !element.contains(topElement);
   };
-  
-  // Создаем наблюдатель
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      // Находим цифру внутри текущего элемента
-      console.log(entry.isIntersecting);
-      
-      const countElement = entry.target.parentElement.querySelector('.item-evidence__count');
-      if (countElement) {
-        if (entry.isIntersecting) {
-          // Элемент виден — добавляем класс `active`
-          countElement.classList.add('active');
-        } else {
-          // Элемент скрылся — убираем класс `active`
-          countElement.classList.remove('active');
-        }
+
+  const isElementInViewport = (element, threshold = 0.5) => {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top <= window.innerHeight * threshold &&
+      rect.bottom >= 0
+    );
+  };
+
+  // Основная функция для обработки элементов
+  const handleEvidenceItems = () => {
+    const evidenceItems = document.querySelectorAll(".item-evidence");
+    let ticking = false;
+
+    const updateActiveStates = () => {
+      evidenceItems.forEach((item) => {
+        const contentElement = item.querySelector(".item-evidence__content");
+        const countElement = item.querySelector(".item-evidence__count");
+        const isVisible = isElementInViewport(contentElement);
+        const isCovered = isElementCovered(contentElement);
+
+        contentElement.classList.toggle("active", isVisible && !isCovered);
+        countElement.classList.toggle("active", isVisible && !isCovered);
+      });
+      ticking = false;
+    };
+
+    const requestTick = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateActiveStates);
+        ticking = true;
       }
-    });
-  }, observerOptions);
-  
-  // Наблюдаем за всеми блоками `.item-evidence__content`
-  const contentBlocks = document.querySelectorAll('.item-evidence__content');
-  contentBlocks.forEach(block => {
-    observer.observe(block);
-  });
+    };
+
+    // Инициализация IntersectionObserver только для мобильных
+    if (mobileMediaQuery.matches) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const item = entry.target;
+            const contentElement = item.querySelector(".item-evidence__content");
+            const countElement = item.querySelector(".item-evidence__count");
+            const isCovered = isElementCovered(contentElement);
+
+            contentElement.classList.toggle("active", entry.isIntersecting && !isCovered);
+            countElement.classList.toggle("active", entry.isIntersecting && !isCovered);
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      evidenceItems.forEach((item) => observer.observe(item));
+      window.addEventListener("scroll", requestTick);
+      window.addEventListener("resize", requestTick);
+      updateActiveStates();
+    }
+  };
+
+  // Обработчик изменений размера экрана
+  const handleMediaChange = (e) => {
+    if (e.matches) {
+      handleEvidenceItems();
+    } else {
+      // Очистка при переходе на десктоп
+      document.querySelectorAll(".item-evidence").forEach((item) => {
+        item.querySelector(".item-evidence__content").classList.remove("active");
+        item.querySelector(".item-evidence__count").classList.remove("active");
+      });
+      window.removeEventListener("scroll", handleEvidenceItems);
+      window.removeEventListener("resize", handleEvidenceItems);
+    }
+  };
+
+  // Инициализация и подписка на изменения
+  mobileMediaQuery.addListener(handleMediaChange);
+  handleMediaChange(mobileMediaQuery);
 });

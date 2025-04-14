@@ -2242,7 +2242,7 @@
     @media (max-width:mixins.toEm(variables.$mobile)) {
       gap: mixins.toRem(40);
 
-      &._watcher-view {
+      &.active {
 
         .item-evidence__count {
           color: var(--grey-dark);
