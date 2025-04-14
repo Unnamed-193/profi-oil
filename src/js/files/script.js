@@ -136,92 +136,98 @@ function createScrollbar(parent) {
   return scrollbar;
 }
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   // Проверяем ширину экрана и инициализируем только на мобильных
-//   const mobileMediaQuery = window.matchMedia('(max-width: 767px)');
+document.addEventListener("DOMContentLoaded", () => {
+  // Проверяем ширину экрана и инициализируем только на мобильных
+  const mobileMediaQuery = window.matchMedia('(max-width: 767px)');
   
-//   // Функции для проверки видимости и перекрытия
-//   const isElementCovered = (element) => {
-//     const rect = element.getBoundingClientRect();
-//     const centerX = rect.left + rect.width / 2;
-//     const centerY = rect.top + rect.height / 2;
-//     const topElement = document.elementFromPoint(centerX, centerY);
-//     return topElement !== element && !element.contains(topElement);
-//   };
+  // Функции для проверки видимости и перекрытия
+  const isElementCovered = (element) => {
+    const rect = element.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const topElement = document.elementFromPoint(centerX, centerY);
+    return topElement !== element && !element.contains(topElement);
+  };
 
-//   const isElementInViewport = (element, threshold = 0.5) => {
-//     const rect = element.getBoundingClientRect();
-//     return (
-//       rect.top <= window.innerHeight * threshold &&
-//       rect.bottom >= 0
-//     );
-//   };
+  const isElementInViewport = (element, threshold = 0.5) => {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top <= window.innerHeight * threshold &&
+      rect.bottom >= 0
+    );
+  };
 
-//   // Основная функция для обработки элементов
-//   const handleEvidenceItems = () => {
-//     const evidenceItems = document.querySelectorAll(".item-evidence");
-//     let ticking = false;
+  // Основная функция для обработки элементов
+  const handleEvidenceItems = () => {
+    const evidenceItems = document.querySelectorAll(".item-evidence");
+    let ticking = false;
 
-//     const updateActiveStates = () => {
-//       evidenceItems.forEach((item) => {
-//         const contentElement = item.querySelector(".item-evidence__content");
-//         const countElement = item.querySelector(".item-evidence__count");
-//         const isVisible = isElementInViewport(contentElement);
-//         const isCovered = isElementCovered(contentElement);
+    const updateActiveStates = () => {
+      evidenceItems.forEach((item) => {
+        const contentElement = item.querySelector(".item-evidence__content");
+        const countElement = item.querySelector(".item-evidence__count");
+        const isVisible = isElementInViewport(contentElement);
+        const isCovered = isElementCovered(contentElement);
 
-//         contentElement.classList.toggle("active", isVisible && !isCovered);
-//         countElement.classList.toggle("active", isVisible && !isCovered);
-//       });
-//       ticking = false;
-//     };
+        contentElement.classList.toggle("active", isVisible && !isCovered);
+        countElement.classList.toggle("active", isVisible && !isCovered);
+      });
+      ticking = false;
+    };
 
-//     const requestTick = () => {
-//       if (!ticking) {
-//         requestAnimationFrame(updateActiveStates);
-//         ticking = true;
-//       }
-//     };
+    const requestTick = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateActiveStates);
+        ticking = true;
+      }
+    };
 
-//     // Инициализация IntersectionObserver только для мобильных
-//     if (mobileMediaQuery.matches) {
-//       const observer = new IntersectionObserver(
-//         (entries) => {
-//           entries.forEach((entry) => {
-//             const item = entry.target;
-//             const contentElement = item.querySelector(".item-evidence__content");
-//             const countElement = item.querySelector(".item-evidence__count");
-//             const isCovered = isElementCovered(contentElement);
+    // Инициализация IntersectionObserver только для мобильных
+    if (mobileMediaQuery.matches) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const item = entry.target;
+            const contentElement = item.querySelector(".item-evidence__content");
+            const countElement = item.querySelector(".item-evidence__count");
+            const isCovered = isElementCovered(contentElement);
 
-//             contentElement.classList.toggle("active", entry.isIntersecting && !isCovered);
-//             countElement.classList.toggle("active", entry.isIntersecting && !isCovered);
-//           });
-//         },
-//         { threshold: 0.5 }
-//       );
+            contentElement.classList.toggle("active", entry.isIntersecting && !isCovered);
+            countElement.classList.toggle("active", entry.isIntersecting && !isCovered);
+          });
+        },
+        { threshold: 0.5 }
+      );
 
-//       evidenceItems.forEach((item) => observer.observe(item));
-//       window.addEventListener("scroll", requestTick);
-//       window.addEventListener("resize", requestTick);
-//       updateActiveStates();
-//     }
-//   };
+      evidenceItems.forEach((item) => observer.observe(item));
+      window.addEventListener("scroll", requestTick);
+      window.addEventListener("resize", requestTick);
+      updateActiveStates();
+    }
+  };
 
-//   // Обработчик изменений размера экрана
-//   const handleMediaChange = (e) => {
-//     if (e.matches) {
-//       handleEvidenceItems();
-//     } else {
-//       // Очистка при переходе на десктоп
-//       document.querySelectorAll(".item-evidence").forEach((item) => {
-//         item.querySelector(".item-evidence__content").classList.remove("active");
-//         item.querySelector(".item-evidence__count").classList.remove("active");
-//       });
-//       window.removeEventListener("scroll", handleEvidenceItems);
-//       window.removeEventListener("resize", handleEvidenceItems);
-//     }
-//   };
+  // Обработчик изменений размера экрана
+  const handleMediaChange = (e) => {
+    if (e.matches) {
+      handleEvidenceItems();
+    } else {
+      // Очистка при переходе на десктоп
+      document.querySelectorAll(".item-evidence").forEach((item) => {
+        item.querySelector(".item-evidence__content").classList.remove("active");
+        item.querySelector(".item-evidence__count").classList.remove("active");
+      });
+      window.removeEventListener("scroll", handleEvidenceItems);
+      window.removeEventListener("resize", handleEvidenceItems);
+    }
+  };
 
-//   // Инициализация и подписка на изменения
-//   mobileMediaQuery.addListener(handleMediaChange);
-//   handleMediaChange(mobileMediaQuery);
-// });
+  // Инициализация и подписка на изменения
+  mobileMediaQuery.addListener(handleMediaChange);
+  handleMediaChange(mobileMediaQuery);
+});
+
+if (window.innerWidth <= 1320) {
+  document.querySelector('.path-red-line-mobile').style.animation = 'draw 2s 0.5s ease-out forwards';
+} else {
+  document.querySelector('.path-red-line').style.animation = 'draw 2s 0.5s ease-out forwards';
+}
