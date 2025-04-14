@@ -2133,16 +2133,17 @@
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      @media (min-height: 700px) {
-        --header-height: 20px;
-        position: sticky;
-        top: var(--header-height);
-        margin-bottom: mixins.toRem(576);
-        z-index: 99;
-      }
 
       position: static;
       margin-bottom: mixins.toRem(40);
+    }
+
+    @media (min-height: 700px) {
+      --header-height: 20px;
+      position: sticky;
+      top: var(--header-height);
+      margin-bottom: mixins.toRem(576);
+      z-index: 99;
     }
 
     .loaded ._watcher-view & {
@@ -2159,13 +2160,14 @@
     gap: mixins.toRem(30);
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      @media (min-height: 700px) {
-        margin-top: mixins.toRem(-544);
-      }
-
       position: relative;
       gap: 0;
     }
+
+    @media (min-height: 700px) {
+      margin-top: mixins.toRem(-544);
+    }
+
   }
 
   @media (min-width: mixins.toEm(variables.$mobile)) {
@@ -2213,10 +2215,6 @@
 
 
   @media (max-width:mixins.toEm(variables.$mobile)) {
-    @media (max-height: 700px) {
-      top: 20px;
-    }
-
     position: sticky;
     background: var(--white);
     top: 138px;
@@ -2240,6 +2238,9 @@
 
   }
 
+  @media (max-height: 700px) {
+    top: 20px;
+  }
 
 
   &__count {
