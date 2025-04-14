@@ -2287,6 +2287,7 @@
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
       gap: mixins.toRem(40);
+      outline: 1px solid transparent;
 
       &.active {
 
