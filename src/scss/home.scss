@@ -57,8 +57,8 @@
     position: absolute;
 
     @include mixins.adaptiveValue("max-width", 631, 600, 1920, 1340);
-    @include mixins.adaptiveValue("right", 95, -160, 1920, 1340);
-    @include mixins.adaptiveValue("bottom", 83, 54);
+    @include mixins.adaptiveValue("right", 73, -160, 1920, 1340);
+    @include mixins.adaptiveValue("bottom", 90, 54);
 
     @media (min-width:mixins.toEm(1921)) {
       min-width: mixins.toRem(631);
@@ -67,13 +67,14 @@
     }
 
     @media(max-width: mixins.toEm(variables.$laptop)) {
-      @include mixins.adaptiveValue("max-width", 450, 440, variables.$laptop, 992);
-      @include mixins.adaptiveValue("right", 43, -110, variables.$laptop, 992);
-      @include mixins.adaptiveValue("bottom", 56, 55, variables.$laptop, 992);
+      @include mixins.adaptiveValue("max-width", 465, 440, variables.$laptop, 992);
+      @include mixins.adaptiveValue("right", 20, -110, variables.$laptop, 992);
+      @include mixins.adaptiveValue("bottom", 60, 55, variables.$laptop, 992);
     }
 
     @media(max-width: mixins.toEm(variables.$tablet)) {
-      @include mixins.adaptiveValue("right", -110, -220, variables.$tablet, 768);
+      @include mixins.adaptiveValue("right", -120, -220, variables.$tablet, 768);
+      @include mixins.adaptiveValue("bottom", 55, 55, variables.$tablet, 768);
       bottom: mixins.toRem(50);
     }
 
