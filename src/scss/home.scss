@@ -2138,7 +2138,8 @@
       margin-bottom: mixins.toRem(40);
     }
 
-    @media (max-width:mixins.toEm(variables.$mobile)) and (min-height: 750px) {
+    @media (max-width:mixins.toEm(variables.$mobile)) and (min-height: 750px),
+    (min-device-height: 750px) {
       --header-height: 20px;
       position: sticky;
       top: var(--header-height);
@@ -2163,7 +2164,8 @@
       gap: 0;
     }
 
-    @media (max-width:mixins.toEm(variables.$mobile)) and (min-height: 750px) {
+    @media (max-width:mixins.toEm(variables.$mobile)) and (min-height: 750px),
+    (min-device-height: 750px) {
       margin-top: mixins.toRem(-544);
     }
 
@@ -2237,7 +2239,8 @@
 
   }
 
-  @media (max-width: mixins.toEm(variables.$mobile)) and (min-height: 750px) {
+  @media (max-width: mixins.toEm(variables.$mobile)) and (min-height: 750px),
+  (min-device-height: 750px) {
     top: 138px;
   }
 
