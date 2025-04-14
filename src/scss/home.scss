@@ -2133,7 +2133,7 @@
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      @media (min-height:mixins.toEm(700)) {
+      @media (min-height: 700px) {
         --header-height: 20px;
         position: sticky;
         top: var(--header-height);
@@ -2159,7 +2159,7 @@
     gap: mixins.toRem(30);
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      @media (min-height:mixins.toEm(700)) {
+      @media (min-height: 700px) {
         margin-top: mixins.toRem(-544);
       }
 
@@ -2213,7 +2213,7 @@
 
 
   @media (max-width:mixins.toEm(variables.$mobile)) {
-    @media (max-height:mixins.toEm(700)) {
+    @media (max-height: 700px) {
       top: 20px;
     }
 
