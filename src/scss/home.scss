@@ -1999,8 +1999,8 @@
 
         @media(max-width: mixins.toEm(1320)) {
           .path-red-line-mobile {
-            stroke-dasharray: 250;
-            stroke-dashoffset: 250;
+            stroke-dasharray: 250px;
+            stroke-dashoffset: 250px;
             shape-rendering: geometricPrecision;
             -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
