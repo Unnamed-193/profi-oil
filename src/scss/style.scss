@@ -152,14 +152,13 @@ body {
 
 // Подключение базовых стилей, шаблонов (заготовок) и вспомогательных  классов
 // Для подключения/отключения конкретных стилей смотри base.scss
+@include meta.load-css("normalize");
 @include meta.load-css("base");
 
 // Подключение стилей общих элементов проекта
 @include meta.load-css("common");
 
 // Подключение стилей отдельных блоков
-@include meta.load-css("header");
-@include meta.load-css("footer");
 
 // Подключение стилей отдельных страниц
 @include meta.load-css("home");

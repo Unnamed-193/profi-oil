@@ -2537,7 +2537,9 @@
     }
   }
 
-  &__slider {}
+  &__slider {
+    -webkit-overflow-scrolling: touch;
+  }
 
   &__track {
     overflow: visible;
