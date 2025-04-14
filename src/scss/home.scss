@@ -2001,33 +2001,6 @@
           }
         }
 
-        @media(max-width: mixins.toEm(1320)) {
-          .path-red-line-mobile {
-            stroke-dasharray: 250px;
-            stroke-dashoffset: 250px;
-            shape-rendering: geometricPrecision;
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-            stroke-width: 22.1247px;
-            will-change: transform;
-
-            ._watcher-view & {
-              -webkit-animation: draw 2s 0.5s ease-out forwards;
-              animation: draw 2s 0.5s ease-out forwards;
-            }
-          }
-
-          circle[cx="247.83"][cy="117.099"] {
-            opacity: 0;
-
-            // Анимация будет запускаться только при наличии класса _watcher-view
-            ._watcher-view & {
-              -webkit-animation: fadeIn 0.5s 1.5s forwards;
-              animation: fadeIn 0.5s 1.5s forwards;
-            }
-          }
-        }
-
         @media(max-width: mixins.toEm(1100)) {
           path {
             fill: var(--grey-light);
@@ -2046,10 +2019,14 @@
       flex-direction: column;
       text-align: center;
       line-height: math.div(22, 15);
+      font-size: mixins.toRem(22);
 
-      @include mixins.adaptiveValue("font-size", 22, 18, 1920, 1320);
       @include mixins.adaptiveValue("gap", 8, 5);
-      @include mixins.adaptiveValue("bottom", 60, 60, 1320, 1100);
+
+      @media (max-width:mixins.toEm(variables.$laptop)) {
+        font-size: mixins.toRem(18);
+        bottom: mixins.toRem(85);
+      }
 
       ._red {
         color: var(--red);
