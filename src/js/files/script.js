@@ -137,6 +137,7 @@ function createScrollbar(parent) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
   // Проверяем ширину экрана и инициализируем только на мобильных
   const mobileMediaQuery = window.matchMedia('(max-width: 767px)');
   
