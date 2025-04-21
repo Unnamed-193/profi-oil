@@ -17,13 +17,14 @@
     content: '';
     position: absolute;
     z-index: 1;
-    bottom: 0;
+    bottom: 13px;
     height: 100%;
     width: 100%;
     background-image: url('../img/hero/light.webp');
     background-repeat: no-repeat;
-    background-position: bottom center;
+    background-position: center bottom ;
     background-size: contain;
+    opacity: 0.8;
     mix-blend-mode: lighten;
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
@@ -203,7 +204,7 @@
 
     @media (min-width:mixins.toEm(variables.$laptop)) {
       padding-top: mixins.toRem(35);
-      padding-bottom: mixins.toRem(130);
+      padding-bottom: mixins.toRem(111);
     }
 
     @media (max-width:mixins.toEm(variables.$laptop)) {
@@ -239,6 +240,7 @@
     line-height: 1;
     position: relative;
     max-width: mixins.vw(1155, 1320);
+    margin-top: 0;
     margin-bottom: mixins.toRem(31);
 
     svg {
@@ -291,7 +293,7 @@
   }
 
   &__slogan-box {
-    margin-bottom: mixins.toRem(140);
+    margin-bottom: mixins.toRem(120);
     width: mixins.toRem(430);
     @include mixins.adaptiveValue("height", 41, 48);
 

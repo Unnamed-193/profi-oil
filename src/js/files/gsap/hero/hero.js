@@ -1,7 +1,7 @@
 import gsap from "gsap";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const tl = gsap.timeline({ delay: 0.2, defaults: { duration: 0.5, ease: "power1.out" } });
+  const tl = gsap.timeline({ delay: 0.2, defaults: { duration: 0.3, ease: "power1.out" } });
   const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
   // 1. Анимация заголовка и текста

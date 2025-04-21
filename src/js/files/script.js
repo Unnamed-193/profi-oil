@@ -3,7 +3,7 @@
 
 import './getCurrentYear.js';
 import './gsap/hero/hero.js';
-import './gsap/ow/ow.js';
+// import './gsap/ow/ow.js';
 
 const mmd1 = matchMedia('(min-width: 1920px)');
 const md3 = matchMedia('(min-width: 1920px)');
