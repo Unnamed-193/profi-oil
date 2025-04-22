@@ -70,7 +70,7 @@ body {
 // Например header__container, main__container і т.п.
 // Сниппет (HTML): cnt
 
-@if (variables.$responsiveType ==1) {
+@if (variables.$responsiveType == 1) {
 
   // Отзывчивый контейнер
   [class*="__container"] {
@@ -94,7 +94,7 @@ body {
     }
 
     // Добавляем кастомный padding на 1320px
-    @media (max-width: 1320px) and (min-width: 1100px) {
+    @media (min-width: 1100px) and (max-width: 1320px){
       @include mixins.adaptiveValue("padding-right", 150, 15, 1320, 1100);
       @include mixins.adaptiveValue("padding-left", 150, 15, 1320, 1100);
       // padding-right: 150px !important;
@@ -120,7 +120,7 @@ body {
     }
 
     // Добавляем кастомный padding на 1320px
-    @media (max-width: 1320px) and (min-width: 1100px) {
+    @media (min-width: 1100px) and (max-width: 1320px){
       @include mixins.adaptiveValue("padding-right", 150, 15, 1320, 1100);
         @include mixins.adaptiveValue("padding-left", 150, 15, 1320, 1100);
         // padding-right: 150px !important;

@@ -1351,7 +1351,6 @@
 //==========================================================================================
 .tech {
   position: relative;
-  min-height: mixins.toRem(520);
   display: flex;
   --animDuration: calc(var(--globalAnimDuration) * 0.55);
 
@@ -1377,6 +1376,7 @@
   &__leftbg {
     img {
       height: 100%;
+      border-radius: mixins.toRem(20);
       object-fit: cover;
       object-position: center;
     }
@@ -1434,11 +1434,12 @@
     align-items: center;
 
     @include mixins.adaptiveValue("column-gap", 289, 250, 1320, 992);
-    @include mixins.adaptiveValue("padding-top", 55, 35);
+    @include mixins.adaptiveValue("padding-top", 66, 40);
 
     @media (min-width:mixins.toEm(variables.$tablet)) {
-      padding-bottom: mixins.toRem(61);
+      padding-bottom: mixins.toRem(66);
       grid-template-columns: repeat(2, 1fr);
+      // grid-template-rows: 378px;
     }
 
     @media (max-width:mixins.toEm(variables.$tablet)) {
@@ -1469,7 +1470,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      translate: -63% -50%;
+      translate: -57% -50%;
     }
 
     @media (max-width:mixins.toEm(variables.$tablet)) {
@@ -1508,7 +1509,7 @@
 
   &__sqare {
     position: absolute;
-    left: 80.5%;
+    left: 60.5%;
     top: 50%;
     translate: 0% -50%;
     height: mixins.toRem(203);
@@ -1533,10 +1534,7 @@
     display: flex;
     flex-direction: column;
     @include mixins.adaptiveValue("gap", 25, 10);
-
-    &:not(:last-child) {
-      @include mixins.adaptiveValue('margin-bottom', 40, 20)
-    }
+    @include mixins.adaptiveValue('margin-bottom', 40, 20)
   }
 
   &__title {
@@ -1564,6 +1562,7 @@
   &__logo {
     opacity: 0;
     translate: 0 mixins.toRem(30);
+    margin-bottom: mixins.toRem(60);
 
     .loaded & {
       transition:
@@ -1580,7 +1579,6 @@
   }
 
   &__button {
-    margin-top: auto;
     width: max-content;
     opacity: 0;
     translate: 0 mixins.toRem(30);
@@ -1615,6 +1613,9 @@
 
 .right-tech {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
 
   &__itemwrap {
     position: relative;
@@ -1623,13 +1624,9 @@
     --pl: #{mixins.toRem(7)};
 
     @include mixins.adaptiveValue("--img_width", 118, 94, 1920, 1320);
-    @include mixins.adaptiveValue("--mb", 70, 30, 1320, 992);
     @include mixins.adaptiveValue("--pt", 13, 9);
     @include mixins.adaptiveValue("--gap", 20, 10);
 
-    &:not(:last-child) {
-      margin-bottom: var(--mb);
-    }
 
     @media (max-width:mixins.toEm(variables.$tablet)) {
       --pl: #{mixins.toRem(12)};
@@ -1801,9 +1798,8 @@
   &__container {
     max-width: mixins.toRem(1350);
     display: grid;
-    align-items: center;
+    align-items: flex-start;
     padding-top: mixins.toRem(20);
-    margin-top: mixins.toRem(-16);
 
     padding-bottom: mixins.toRem(120);
 
@@ -1811,9 +1807,7 @@
       grid-template-columns: 1fr mixins.toRem(370) 1fr;
       gap: mixins.toRem(28);
     }
-
-
-    @media (min-width: mixins.toEm(1100)) and (max-width:mixins.toEm(variables.$laptop)) {
+    @media (min-width: mixins.toEm(1100)) and (max-width: mixins.toEm(variables.$laptop)) {
       grid-template-columns: 1fr mixins.toRem(296) 1fr;
       gap: mixins.toRem(28);
       padding-bottom: mixins.toRem(100);
@@ -1834,18 +1828,15 @@
     gap: mixins.toRem(20);
     align-items: center;
     line-height: math.div(26.4, 22);
-    padding: mixins.toRem(25) mixins.toRem(40);
-
-    @include mixins.adaptiveValue("font-size", 22, 18, 1920, 1320);
-    @include mixins.adaptiveValue("font-size", 18, 16, 1100);
-
-
+    padding: mixins.toRem(25) mixins.toRem(40) mixins.toRem(22);
+    font-size: mixins.toRem(22);
 
     @media (min-width:mixins.toEm(1100)) {
       background-color: var(--light);
     }
 
     @media (max-width: mixins.toEm(variables.$laptop)) {
+      font-size: mixins.toRem(18);
       padding: mixins.toRem(20);
       --icnsz: #{mixins.toRem(65)};
     }
@@ -1864,6 +1855,10 @@
       &:last-child {
         grid-template-rows: 1fr;
       }
+    }
+
+    @media (max-width: mixins.toEm(variables.$mobile)) {
+      font-size: mixins.toRem(16);
     }
 
     .loaded & {
@@ -1913,6 +1908,8 @@
   }
 
   &__text {
+
+
     @media (min-width:mixins.toEm(1100)) {
       grid-column: span 2;
     }
