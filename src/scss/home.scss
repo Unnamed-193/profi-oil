@@ -431,8 +431,8 @@
     }
 
     @media (min-width:mixins.toEm(variables.$laptop)) {
-      padding-top: mixins.toRem(140);
-      padding-bottom: mixins.toRem(140);
+      padding-top: mixins.toRem(120);
+      padding-bottom: mixins.toRem(120);
       gap: 40px;
     }
 
