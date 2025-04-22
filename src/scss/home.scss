@@ -22,10 +22,17 @@
     width: 100%;
     background-image: url('../img/hero/light.webp');
     background-repeat: no-repeat;
-    background-position: center bottom ;
+    background-position: center bottom;
     background-size: contain;
     opacity: 0.8;
     mix-blend-mode: lighten;
+
+    @media (max-width:mixins.toEm(variables.$laptop)) {
+      background-image: url('../img/hero/light-1320.webp');
+      height: 151px;
+      background-size: cover;
+      bottom: 0;
+    }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
       background: none;
@@ -57,9 +64,9 @@
     max-height: mixins.toRem(318);
     position: absolute;
 
-    @include mixins.adaptiveValue("max-width", 631, 600, 1920, 1340);
-    @include mixins.adaptiveValue("right", 73, -160, 1920, 1340);
-    @include mixins.adaptiveValue("bottom", 90, 54);
+    @include mixins.adaptiveValue("width", 650, 631, 1920, 1340);
+    @include mixins.adaptiveValue("right", 50, -190, 1920, 1340);
+    @include mixins.adaptiveValue("bottom", 65, 50, 1920, 1340);
 
     @media (min-width:mixins.toEm(1921)) {
       min-width: mixins.toRem(631);
@@ -69,8 +76,8 @@
 
     @media(max-width: mixins.toEm(variables.$laptop)) {
       @include mixins.adaptiveValue("max-width", 465, 440, variables.$laptop, 992);
-      @include mixins.adaptiveValue("right", 20, -110, variables.$laptop, 992);
-      @include mixins.adaptiveValue("bottom", 60, 55, variables.$laptop, 992);
+      @include mixins.adaptiveValue("right", 25, -120, variables.$laptop, 992);
+      @include mixins.adaptiveValue("bottom", 55, 55, variables.$laptop, 992);
     }
 
     @media(max-width: mixins.toEm(variables.$tablet)) {
@@ -274,7 +281,6 @@
     font-weight: 300;
     color: var(--white);
     line-height: 120%;
-    letter-spacing: -0.02em;
     text-transform: uppercase;
     text-align: center;
     margin-bottom: mixins.toRem(31);
@@ -295,7 +301,6 @@
   &__slogan-box {
     margin-bottom: mixins.toRem(120);
     width: mixins.toRem(430);
-    @include mixins.adaptiveValue("height", 41, 48);
 
     @media (max-width:mixins.toEm(variables.$laptop)) {
       width: mixins.toRem(303);
@@ -338,7 +343,13 @@
     color: var(--white);
     background: var(--slogan);
     font-size: mixins.toRem(28);
+
     border: none;
+
+    @media (min-width:mixins.toEm(variables.$laptop)) {
+      padding-top: mixins.toRem(3);
+      padding-bottom: mixins.toRem(4);
+    }
 
     @media (max-width:mixins.toEm(variables.$laptop)) {
       font-size: mixins.toRem(20);
@@ -356,8 +367,8 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    left: 18%;
-    bottom: mixins.toRem(100);
+    left: 17%;
+    bottom: mixins.toRem(66);
 
     @include mixins.adaptiveValue("width", 357, 213, 1920, 768);
     @include mixins.adaptiveValue("height", 367, 238, 1920, 768);
@@ -2359,6 +2370,7 @@
 
         &::before {
           scale: 0.43 1;
+
           @media (max-width: mixins.toEm(1920)) {
             scale: 0.3 1;
           }
