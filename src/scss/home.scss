@@ -2606,7 +2606,7 @@
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
       padding-bottom: mixins.toRem(25);
-      gap: mixins.toRem(25);
+      gap: mixins.toRem(15);
     }
 
     // .loaded & {
