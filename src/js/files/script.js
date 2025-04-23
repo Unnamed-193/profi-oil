@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const updateActiveStates = () => {
       evidenceItems.forEach((item) => {
-        const contentElement = item.querySelector(".item-evidence__content");
+        const contentElement = item.querySelector(".item-evidence__box");
         const countElement = item.querySelector(".item-evidence__count");
         const isVisible = isElementInViewport(contentElement);
         const isCovered = isElementCovered(contentElement);
@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
         (entries) => {
           entries.forEach((entry) => {
             const item = entry.target;
-            const contentElement = item.querySelector(".item-evidence__content");
+            const contentElement = item.querySelector(".item-evidence__box");
             const countElement = item.querySelector(".item-evidence__count");
             const isCovered = isElementCovered(contentElement);
 
@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       // Очистка при переходе на десктоп
       document.querySelectorAll(".item-evidence").forEach((item) => {
-        item.querySelector(".item-evidence__content").classList.remove("active");
+        item.querySelector(".item-evidence__box").classList.remove("active");
         item.querySelector(".item-evidence__count").classList.remove("active");
       });
       window.removeEventListener("scroll", handleEvidenceItems, { passive: true });
