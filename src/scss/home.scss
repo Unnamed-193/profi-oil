@@ -166,12 +166,12 @@
 
       @media(max-width: mixins.toEm(variables.$mobileSmall)) {
         @include mixins.adaptiveValue("right", 5, 8, variables.$mobileSmall, 320);
-        @include mixins.adaptiveValue("top", 43, 23, variables.$mobileSmall, 320);
+        @include mixins.adaptiveValue("top", 37, 17, variables.$mobileSmall, 320);
 
 
         &__right {
-          @include mixins.adaptiveValue("right", 200, 130, variables.$mobileSmall, 320);
-          top: 3%;
+          @include mixins.adaptiveValue("right", 190, 110, variables.$mobileSmall, 320);
+          top: 5%;
         }
       }
     }
