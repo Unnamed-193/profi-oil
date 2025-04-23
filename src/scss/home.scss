@@ -2690,8 +2690,8 @@
 
     .loaded & {
       transition:
-        translate var(--globalAnimDuration) var(--globalTransitionTiming),
-        opacity var(--globalAnimDuration) var(--globalTransitionTiming);
+        translate calc(var(--globalAnimDuration) * 2) var(--globalTransitionTiming),
+        opacity calc(var(--globalAnimDuration) * 2) var(--globalTransitionTiming);
     }
 
     .loaded ._watcher-view & {
