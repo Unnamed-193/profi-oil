@@ -2297,6 +2297,7 @@
     @media (max-width: mixins.toEm(variables.$mobile)) {
       background: var(--grey-light);
       padding: mixins.toRem(20);
+
       &.active {
         .item-evidence__count {
           color: var(--grey-dark);
@@ -2583,8 +2584,8 @@
     border: mixins.toRem(1) solid var(--light_grey);
     border-radius: mixins.toRem(10);
     padding: mixins.toRem(20);
-    opacity: 0;
-    translate: 0 mixins.toRem(30);
+    // opacity: 0;
+    // translate: 0 mixins.toRem(30);
 
     @include mixins.adaptiveValue("width", 427, 285);
 
@@ -2593,19 +2594,19 @@
       gap: mixins.toRem(25);
     }
 
-    .loaded & {
-      transition:
-        translate var(--globalAnimDuration) var(--globalTransitionTiming),
-        opacity var(--globalAnimDuration) var(--globalTransitionTiming);
+    // .loaded & {
+    //   transition:
+    //     translate var(--globalAnimDuration) var(--globalTransitionTiming),
+    //     opacity var(--globalAnimDuration) var(--globalTransitionTiming);
 
-      --delay: calc((var(--globalAnimDuration) / 4) * var(--index, 1) + (var(--globalAnimDuration) / 2));
-      transition-delay: var(--delay);
-    }
+    //   --delay: calc((var(--globalAnimDuration) / 4) * var(--index, 1) + (var(--globalAnimDuration) / 2));
+    //   transition-delay: var(--delay);
+    // }
 
-    .loaded ._watcher-view & {
-      opacity: 1;
-      translate: 0 0;
-    }
+    // .loaded ._watcher-view & {
+    //   opacity: 1;
+    //   translate: 0 0;
+    // }
   }
 
   &__image {
@@ -2618,6 +2619,8 @@
     font-weight: 500;
     line-height: math.div(30, 20);
     text-transform: uppercase;
+    opacity: 0;
+    translate: 0 mixins.toRem(30);
     @include mixins.adaptiveValue("font-size", 25, 20);
 
     @media (min-width:mixins.toEm(variables.$mobile)) {
@@ -2634,6 +2637,17 @@
 
     &:not(:last-child) {
       margin-bottom: mixins.toRem(5);
+    }
+
+    .loaded & {
+      transition:
+        translate var(--globalAnimDuration) var(--globalTransitionTiming),
+        opacity var(--globalAnimDuration) var(--globalTransitionTiming);
+    }
+
+    .loaded ._watcher-view & {
+      opacity: 1;
+      translate: 0 0;
     }
   }
 
