@@ -385,7 +385,7 @@
     left: 17%;
     bottom: mixins.toRem(66);
 
-    @include mixins.adaptiveValue("width", 357, 213, 1920, 768);
+    @include mixins.adaptiveValue("width", 386, 213, 1920, 768);
     @include mixins.adaptiveValue("height", 367, 238, 1920, 768);
 
     img {
