@@ -1371,6 +1371,7 @@
 
   @media (max-width:mixins.toEm(variables.$tablet)) {
     background: var(--grey-light);
+    border-radius: mixins.toRem(15);
   }
 
 
@@ -1412,7 +1413,7 @@
       z-index: 2;
       border-radius: mixins.toRem(15);
       overflow: hidden;
-      height: mixins.percent(531, 1037);
+      height: mixins.toRem(540);
     }
 
     @media (max-width:mixins.toEm(variables.$mobileSmall)) {
@@ -1434,8 +1435,8 @@
 
     @media (max-width:mixins.toEm(variables.$tablet)) {
       border-radius: 0 0 mixins.toRem(15) mixins.toRem(15);
-      margin-top: mixins.toRem(-36);
-      height: mixins.percent(500, 992);
+      margin-top: mixins.toRem(-16);
+      height: mixins.toRem(612);
     }
   }
 
@@ -1591,6 +1592,10 @@
       opacity: 1;
       translate: 0 0;
     }
+
+    @media (max-width: mixins.toEm(variables.$tablet)) {
+      margin-bottom: 0;
+    }
   }
 
   &__button {
@@ -1630,12 +1635,19 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: mixins.toRem(80);
+
+  @media (max-width: mixins.toEm(variables.$laptop)) {
+    gap: mixins.toRem(48);
+  }
+
+  @media (max-width: mixins.toEm(variables.$tablet)) {
+    gap: mixins.toRem(30);
+  }
 
   &__itemwrap {
     position: relative;
     // opacity: 0;
-
     --pl: #{mixins.toRem(7)};
 
     @include mixins.adaptiveValue("--img_width", 118, 94, 1920, 1320);
@@ -1670,6 +1682,16 @@
     }
   }
 
+  @media (max-width: mixins.toEm(variables.$tablet)) {
+    &__item-1 {
+      min-height: mixins.toRem(129);
+    }
+
+    &__item-2 {
+      min-height: mixins.toRem(169);
+    }
+  }
+
   &__item {
     color: var(--white);
     display: flex;
@@ -1681,16 +1703,20 @@
     position: relative;
     padding-top: 17px;
     padding-bottom: 17px;
-    height: calc(var(--img_width) + (var(--pt) * 2));
-    min-height: mixins.toRem(129);
+    // height: calc(var(--img_width) + (var(--pt) * 2));
+
     width: calc(var(--img_width) + (var(--pl) * 2));
     scale: 0;
 
-    @include mixins.adaptiveValue('min-height', 129, 169, 992);
+    // @include mixins.adaptiveValue('min-height', 129, 169, 992);
     @include mixins.adaptiveValue('border-radius', 100, 35, 992);
 
-    @media (max-width: mixins.toEm(375)) {
-      @include mixins.adaptiveValue('min-height', 169, 189, 375);
+    @media (min-width: mixins.toEm(variables.$tablet)) {
+      min-height: mixins.toRem(129);
+    }
+
+    @media (max-width: mixins.toEm(374.98)) {
+      @include mixins.adaptiveValue('min-height', 169, 189, 375, 320);
     }
 
     .loaded & {
@@ -2067,6 +2093,8 @@
       }
     }
 
+
+
     @media (max-width: mixins.toEm(1100)) {
       order: -1;
       margin-top: mixins.toRem(-57);
@@ -2097,7 +2125,9 @@
       transform: translateY(0);
     }
 
-    // Ключевые кадры анимации
+    @media (max-width: mixins.toEm(variables.$tablet)) {
+      margin-top: mixins.toRem(-90);
+    }
   }
 }
 
