@@ -1807,6 +1807,7 @@
       grid-template-columns: 1fr mixins.toRem(370) 1fr;
       gap: mixins.toRem(28);
     }
+
     @media (min-width: mixins.toEm(1100)) and (max-width: mixins.toEm(variables.$laptop)) {
       grid-template-columns: 1fr mixins.toRem(296) 1fr;
       gap: mixins.toRem(28);
@@ -1926,8 +1927,12 @@
     -webkit-transform: translateY(30px);
     transform: translateY(mixins.toRem(30));
 
-    @media (min-width:mixins.toEm(1100)) {
+    @media (min-width:mixins.toEm(variables.$laptop)) {
       margin-top: mixins.toRem(-39.5);
+    }
+
+    @media (max-width:mixins.toEm(variables.$laptop)) {
+      margin-top: mixins.toRem(-79.5);
     }
 
     @media (max-width: mixins.toEm(1100)) {
