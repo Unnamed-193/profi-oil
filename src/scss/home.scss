@@ -56,6 +56,11 @@
       @media (max-width:mixins.toEm(variables.$mobile)) {
         object-position: center;
       }
+
+      @media (max-width:mixins.toEm(375)) {
+        object-fit: contain;
+        object-position: center bottom;
+      }
     }
 
   }
@@ -88,9 +93,16 @@
 
     @media(max-width: mixins.toEm(variables.$mobile)) {
       right: auto;
-      @include mixins.adaptiveValue("max-width", 540, 258, variables.$mobile, 320);
-      @include mixins.adaptiveValue("bottom", 160, 237, variables.$mobile, 320);
-      @include mixins.adaptiveValue("left", 43, 0, variables.$mobile, 320);
+      @include mixins.adaptiveValue("max-width", 540, 265, variables.$mobile);
+      @include mixins.adaptiveValue("bottom", 165, 240, variables.$mobile);
+      @include mixins.adaptiveValue("left", 43, 25, variables.$mobile);
+    }
+
+    @media(max-width: mixins.toEm(375)) {
+      right: auto;
+      @include mixins.adaptiveValue("max-width", 258, 230, 374.98, 320);
+      @include mixins.adaptiveValue("bottom", 237, 200, 374.98, 320);
+      @include mixins.adaptiveValue("left", 28, 20, 374.98, 320);
     }
 
     .car {
@@ -171,7 +183,7 @@
     z-index: 3;
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      height: mixins.toRem(602);
+      height: mixins.toRem(619);
     }
 
     @media (max-width:mixins.toEm(variables.$mobileSmall)) {
@@ -230,10 +242,13 @@
   &__logo {
     display: flex;
     z-index: 2;
+    margin-bottom: mixins.toRem(37);
 
-    @include mixins.adaptiveValue("max-width", 139, 72);
+    @include mixins.adaptiveValue("max-width", 139, 92);
 
-    @include mixins.adaptiveValue("margin-bottom", 37, 35);
+    @media (max-width:mixins.toEm(variables.$mobile)) {
+      margin-bottom: mixins.toRem(31.8);
+    }
 
     img {
       width: 100%;
@@ -264,7 +279,7 @@
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      margin-bottom: mixins.toRem(25);
+      margin-bottom: mixins.toRem(17);
     }
 
     svg {
@@ -284,6 +299,7 @@
     text-transform: uppercase;
     text-align: center;
     margin-bottom: mixins.toRem(31);
+    letter-spacing: -0.02em;
 
     @include mixins.adaptiveValue("font-size", 55, 24);
     @include mixins.adaptiveValue("max-width", 1000, 344);
@@ -318,13 +334,12 @@
       height: mixins.toRem(48);
       margin-bottom: 0;
 
-      @include mixins.adaptiveValue("top", 410, 410, variables.$mobile);
+      @include mixins.adaptiveValue("top", 410, 430, variables.$mobile);
       @include mixins.adaptiveValue("right", 110, 123, variables.$mobile);
 
     }
 
-    @media (max-width:mixins.toEm(375)) {
-      @include mixins.adaptiveValue("top", 410, 420, 375, 320);
+    @media (max-width:mixins.toEm(374.98)) {
       @include mixins.adaptiveValue("right", 123, 70, 375, 320);
 
     }
@@ -392,12 +407,12 @@
     }
 
     @media (max-width: mixins.toEm(variables.$mobile)) {
-      bottom: 0;
+      bottom: -5px;
       margin-bottom: mixins.toRem(10);
       width: mixins.toRem(213);
       height: mixins.toRem(238);
       position: relative;
-      left: 17px;
+      left: 9px;
       order: 4;
       align-self: end;
     }
