@@ -227,6 +227,8 @@ img {
   padding: mixins.toRem(8) mixins.toRem(20);
   border-radius: mixins.toRem(7);
   line-height: math.div(24, 20);
+  outline: none;
+  border: none;
 
   .loaded & {
     transition: background-color 0.3s ease 0s, color 0.3s ease 0s;

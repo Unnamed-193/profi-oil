@@ -2276,8 +2276,8 @@
     }
 
     &.active {
-      color: var(--grey-dark) !important;
-      opacity: 0.9 !important;
+      color: var(--grey-dark);
+      opacity: 0.6;
     }
 
     @media (max-width:mixins.toEm(variables.$laptop)) {
@@ -2314,13 +2314,12 @@
       padding: mixins.toRem(20);
 
       &.active {
-        .item-evidence__count {
-          color: var(--grey-dark);
-          opacity: 0.9;
-        }
-
         .item-evidence__title {
           color: var(--white);
+        }
+
+        .item-evidence__text b {
+          font-weight: 500;
         }
 
         .item-evidence__text p,
