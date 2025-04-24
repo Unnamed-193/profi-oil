@@ -69,19 +69,19 @@
     max-height: mixins.toRem(318);
     position: absolute;
 
-    @include mixins.adaptiveValue("width", 650, 631, 1920, 1340);
-    @include mixins.adaptiveValue("right", 50, -190, 1920, 1340);
-    @include mixins.adaptiveValue("bottom", 65, 50, 1920, 1340);
+    @include mixins.adaptiveValue("width", 631, 600, 1920, 1340);
+    @include mixins.adaptiveValue("right", 90, -150, 1920, 1340);
+    @include mixins.adaptiveValue("bottom", 60, 55, 1920, 1340);
 
     @media (min-width:mixins.toEm(1921)) {
-      min-width: mixins.toRem(631);
+      min-width: mixins.toRem(650);
       min-height: mixins.toEm(347);
-      bottom: mixins.toRem(70);
+      bottom: mixins.toRem(55);
     }
 
     @media(max-width: mixins.toEm(variables.$laptop)) {
       @include mixins.adaptiveValue("max-width", 465, 440, variables.$laptop, 992);
-      @include mixins.adaptiveValue("right", 25, -120, variables.$laptop, 992);
+      @include mixins.adaptiveValue("right", 20, -120, variables.$laptop, 992);
       @include mixins.adaptiveValue("bottom", 55, 55, variables.$laptop, 992);
     }
 
@@ -385,7 +385,7 @@
     left: 17%;
     bottom: mixins.toRem(66);
 
-    @include mixins.adaptiveValue("width", 386, 213, 1920, 768);
+    @include mixins.adaptiveValue("width", 357, 213, 1920, 768);
     @include mixins.adaptiveValue("height", 367, 238, 1920, 768);
 
     img {

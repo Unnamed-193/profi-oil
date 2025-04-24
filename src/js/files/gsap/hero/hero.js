@@ -34,12 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }, "+=0.2"); // Задержка после slogan-box
 
   // 4. Анимация фар (после всех элементов)
-  // tl.fromTo('.headlights', 
-  //   { autoAlpha: 0 }, 
-  //   { 
-  //     autoAlpha: 1, 
-  //     yoyo: true, 
-  //     repeat: 1 
-  //   }
-  // );
+  tl.fromTo('.headlights', 
+    { autoAlpha: 0 }, 
+    { 
+      autoAlpha: 1, 
+      yoyo: true, 
+      repeat: 1 
+    }
+  );
 });
