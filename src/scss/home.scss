@@ -69,14 +69,15 @@
     max-height: mixins.toRem(318);
     position: absolute;
 
-    @include mixins.adaptiveValue("width", 631, 600, 1920, 1340);
-    @include mixins.adaptiveValue("right", 90, -150, 1920, 1340);
-    @include mixins.adaptiveValue("bottom", 60, 55, 1920, 1340);
+    @include mixins.adaptiveValue("width", 650, 600, 1920, 1340);
+    @include mixins.adaptiveValue("right", 48, -175, 1920, 1340);
+    @include mixins.adaptiveValue("bottom", 60, 47, 1920, 1340);
 
     @media (min-width:mixins.toEm(1921)) {
       min-width: mixins.toRem(650);
       min-height: mixins.toEm(347);
       bottom: mixins.toRem(55);
+      right: mixins.toRem(65);
     }
 
     @media(max-width: mixins.toEm(variables.$laptop)) {
