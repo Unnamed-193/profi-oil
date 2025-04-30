@@ -477,6 +477,10 @@
     @media (max-width:mixins.toEm(variables.$laptop)) {
       max-width: mixins.toRem(620);
     }
+
+    @media (max-width:mixins.toEm(variables.$mobile)) {
+      max-width: mixins.toRem(375);
+    }
   }
 
   &__text {
@@ -490,6 +494,11 @@
     @media (max-width:mixins.toEm(variables.$laptop)) {
       text-wrap: wrap;
       max-width: mixins.toRem(1022);
+    }
+
+    @media (max-width:mixins.toEm(variables.$mobile)) {
+      font-size: mixins.toRem(16);
+      max-width: mixins.toRem(345);
     }
 
     span {
