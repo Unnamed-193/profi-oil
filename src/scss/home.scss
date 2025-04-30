@@ -2600,7 +2600,7 @@
     @include mixins.adaptiveValue("padding-bottom", 140, 90);
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
-      margin-top: mixins.toRem(150);
+      margin-top: mixins.toRem(190);
     }
   }
 
