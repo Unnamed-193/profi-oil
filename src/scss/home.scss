@@ -246,8 +246,8 @@
     }
 
     @media (max-width:mixins.toEm(variables.$laptop)) {
-      padding-top: mixins.toRem(80);
-      padding-bottom: mixins.toRem(97);
+      padding-top: mixins.toRem(76.8);
+      padding-bottom: mixins.toRem(84.2);
     }
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
@@ -277,7 +277,7 @@
     }
 
     @media (max-width:mixins.toEm(variables.$laptop)) {
-      margin-bottom: mixins.toRem(8);
+      margin-bottom: mixins.toRem(24);
       font-size: mixins.toRem(35);
     }
 
@@ -402,7 +402,7 @@
     }
 
     @media (max-width: mixins.toEm(variables.$laptop)) {
-      left: 12%;
+      left: 14%;
       width: mixins.toRem(245);
       height: mixins.toRem(252);
       bottom: mixins.toRem(50);
