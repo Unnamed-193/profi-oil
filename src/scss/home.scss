@@ -108,7 +108,6 @@
     @media(max-width: mixins.toEm(variables.$tablet)) {
       @include mixins.adaptiveValue("right", -120, -220, variables.$tablet, 768);
       @include mixins.adaptiveValue("bottom", 55, 65, variables.$tablet, 768);
-      bottom: mixins.toRem(50);
     }
 
     @media(max-width: mixins.toEm(variables.$mobile)) {
