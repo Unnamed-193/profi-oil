@@ -1456,10 +1456,10 @@
     align-items: center;
 
     @include mixins.adaptiveValue("column-gap", 289, 250, 1320, 992);
-    @include mixins.adaptiveValue("padding-top", 66, 40);
+    @include mixins.adaptiveValue("padding-top", 56, 40);
 
     @media (min-width:mixins.toEm(variables.$tablet)) {
-      padding-bottom: mixins.toRem(66);
+      padding-bottom: mixins.toRem(69);
       grid-template-columns: repeat(2, 1fr);
       // grid-template-rows: 378px;
     }
@@ -1531,9 +1531,9 @@
 
   &__sqare {
     position: absolute;
-    left: 60.5%;
+    left: 62.7%;
     top: 50%;
-    translate: 0% -50%;
+    translate: 0% -48%;
     height: mixins.toRem(203);
   }
 
@@ -1555,8 +1555,8 @@
   &__head {
     display: flex;
     flex-direction: column;
+    margin-bottom: mixins.toRem(30);
     @include mixins.adaptiveValue("gap", 25, 10);
-    @include mixins.adaptiveValue('margin-bottom', 40, 20)
   }
 
   &__title {
@@ -1564,6 +1564,7 @@
     line-height: math.div(54, 45);
     opacity: 0;
     translate: 0 mixins.toRem(30);
+    letter-spacing: -0.02em;
 
     .loaded & {
       transition:
@@ -1717,8 +1718,13 @@
     // @include mixins.adaptiveValue('min-height', 129, 169, 992);
     @include mixins.adaptiveValue('border-radius', 100, 35, 992);
 
+
     @media (min-width: mixins.toEm(variables.$tablet)) {
       min-height: mixins.toRem(129);
+    }
+
+    @media (min-width: mixins.toEm(variables.$laptop)) {
+      min-height: mixins.toRem(144);
     }
 
     @media (max-width: mixins.toEm(374.98)) {
@@ -1812,7 +1818,7 @@
   }
 
   &__text {
-    font-weight: 400;
+    font-weight: 300;
     font-size: 16px;
     line-height: 120%;
     color: var(--white);
@@ -1975,7 +1981,7 @@
     transform: translateY(mixins.toRem(30));
 
     @media (min-width:mixins.toEm(variables.$laptop)) {
-      margin-top: mixins.toRem(-39.5);
+      margin-top: mixins.toRem(-55.5);
     }
 
     @media (max-width:mixins.toEm(variables.$laptop)) {
@@ -2582,7 +2588,7 @@
     max-width: mixins.toRem(1350);
     padding-top: mixins.toRem(70);
 
-    @include mixins.adaptiveValue("padding-bottom", 100, 90);
+    @include mixins.adaptiveValue("padding-bottom", 140, 90);
 
     @media (max-width:mixins.toEm(variables.$mobile)) {
       margin-top: mixins.toRem(150);
