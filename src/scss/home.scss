@@ -241,7 +241,7 @@
     z-index: 2;
 
     @media (min-width:mixins.toEm(variables.$laptop)) {
-      padding-top: mixins.toRem(115);
+      padding-top: mixins.toRem(88);
       padding-bottom: mixins.toRem(111);
     }
 
@@ -265,7 +265,7 @@
     position: relative;
     max-width: mixins.vw(1155, 1320);
     margin-top: 0;
-    margin-bottom: mixins.toRem(15);
+    margin-bottom: mixins.toRem(40);
     font-size: mixins.toRem(50);
     letter-spacing: -0.02em;
 
